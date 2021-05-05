@@ -98,7 +98,9 @@ export const signUpEmail = (email, password) => {
             var errorCode = error.code;
             var errorMessage = error.message;
             
-            // ..
+            if (error.code === 'auth/email-already-in-use') {
+                // Mostrar error
+            }
         });
 }
 
