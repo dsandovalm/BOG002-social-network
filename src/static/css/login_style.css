@@ -58,3 +58,8 @@
     border-radius: 20px;
     text-align: center;
 }
+
+/* Errores */
+[id ^= "errorMsg"]{
+    color: #862929; ;
+}
