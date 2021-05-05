@@ -1,4 +1,4 @@
-import {printError} from '../view/loginView.js';
+import {printError} from '../views/loginView.js';
 
 // - - - GOOGLE Y FACEBOOK
 
@@ -75,9 +75,17 @@ export const logInEmail = (email, password) => {
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
-           switch (errorCode) {
+            switch (errorCode) {
+                case 'auth/wrong-password':
+                    printError('errorMsg-signin-password', 'Contraseña incorrecta');
+                    break;
+
+                case 'auth/user-not-found':
+                    printError('errorMsg-signin-email', 'Usuario incorrecto');
+                    break;
+
                 case 'auth/internal-error':
-                    printError('errorMsg-signup-email', 'Error interno');
+                    printError('errorMsg-signin-email', 'Error interno. Vuelve a intentarlo');
                     break;
             
                 default:
@@ -125,4 +133,3 @@ auth.sendPasswordResetEmail(emailAddress).thens(function() {
 }).catch(function(error) {
   // An error happened.
 });*/
-
