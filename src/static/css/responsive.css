@@ -7,15 +7,20 @@
     #Presentation {display: none}
     #muro header img{display: none}
 
-    #signin-form h1{
+    #signin-form h1, #recoverPassword h1{
         margin: 0;
-        padding: 20px;
+        padding: 10px;
         font-size: 50px
     }
 
     #muro header input{
         width: auto;
         height: 40px;
+    }
+
+    .container-recover{
+        width: 600;
+        height: fit-content;
     }
 }
 
@@ -24,6 +29,7 @@
   and (max-width: 2000px)
   and (min-width: 800px){
 
+    /*Sección inicio de sesión*/
     #signin-form  h1 {display: none}
     #muro footer {display: none}
 
@@ -44,5 +50,10 @@
 
     #muro header input{
         width: 400px;
+    }
+
+    .container-recover{
+        width: 600;
+        height: fit-content;
     }
 }

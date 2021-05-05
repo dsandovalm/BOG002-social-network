@@ -73,23 +73,13 @@ export const logInEmail = (email, password) => {
         });
 }
 
-/*Olvido de contraseña
-var auth = firebase.auth();
-var emailAddress = "user@example.com";
-sss
-auth.sendPasswordResetEmail(emailAddress).thens(function() {
-  // Email sent.
-}).catch(function(error) {
-  // An error happened.
-});*/
-
 // Creación de cuenta con email y password 
 export const signUpEmail = (email, password) => {
     //Comprobar si el usuario existe
     firebase
         .auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            console.log("registrado")
+            window.location.assign('#/timeline')
         })
         .catch((error) => {
             
@@ -101,4 +91,12 @@ export const signUpEmail = (email, password) => {
             // ..
         });
 }
+
+// Recuperación de contraseña - correo
+export const passwordRecover = () =>{
+    
+}
+
+
+
 

@@ -1,0 +1,17 @@
+/*Estilo página recuperación de contraseña*/
+
+.container-recover h2{
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+}
+
+/*Configuracion de clases containers amarillos*/
+.container-recover {
+    padding: 20px;
+    width: auto;
+    height: fit-content;
+    background: var(--amarillo);
+    border-radius: 30px;
+    text-align: center;
+}
+

@@ -24,6 +24,17 @@ body {margin:0;}
     background-color: var(--morado);
 }
 
+/* Configuración inputs*/
+[class ^= "input"]{
+    width: 250px;
+    height: 30px;
+    margin: 10px;
+    padding: 6px; 
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 15px; 
+    font-size: 15px;
+}
 
 /* Variables de definción de colores*/
 :root {
@@ -46,6 +57,5 @@ section {
 }
 
 /*Parámetros título Walkter en las secciones que se use como h1*/
-h1 {
-    font-family: 'Fredoka One', cursive;
-}
+h1 {font-family: 'Fredoka One', cursive}
+
