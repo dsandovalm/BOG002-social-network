@@ -82,3 +82,7 @@ export function afterRenderLogin() {
         logInEmail(signinEmail, signinPassword,signinForm);
     })
 }
+
+export function printError(id, error){
+    document.querySelector(`#${id}`).innerHtml = error; 
+}
