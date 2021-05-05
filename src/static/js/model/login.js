@@ -75,6 +75,7 @@ export const logInEmail = (email, password) => {
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
+            
             switch (errorCode) {
                 case 'auth/wrong-password':
                     printError('errorMsg-signin-password', 'Contraseña incorrecta');
@@ -93,7 +94,7 @@ export const logInEmail = (email, password) => {
                     break;
             
                 default:
-                    console.log(errorCode);
+                    printError('errorMsg-signin-email', errorMessage);
                     break;
             }
         });
@@ -122,7 +123,7 @@ export const signUpEmail = (email, password) => {
                     break;
             
                 default:
-                    console.log(errorCode);
+                    printError('errorMsg-signup-email', errorMessage);
                     break;
             }
         });
@@ -137,3 +138,4 @@ auth.sendPasswordResetEmail(emailAddress).thens(function() {
 }).catch(function(error) {
   // An error happened.
 });*/
+
