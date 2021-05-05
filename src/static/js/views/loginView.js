@@ -14,9 +14,11 @@ export const renderLogin = () => {
         <form id="signin-form">
             <h1>WALKTER</h1>
             <input type="email" class="input-email" id="signin-email" placeholder="Correo electrónico">
+            <p id = "errorMsg-signin-email"></p>
             <input type="password" class="input-password" id="signin-password" placeholder="Contraseña">
-            <p><a href="#" class="link-forgetMyPassword" type="button">Olvide la contraseña</a></p>
-            <button id="btn-sign-in" name="boton" type="submit">Iniciar sesión</button>
+            <p id = "errorMsg-signin-password"></p>
+            <p><a href="#" class="link-forgetMyPassword" type="button">Recuperar la contraseña</a></p>
+            <button id="btn-sign-in" name="boton">Iniciar sesión</button>
             <span class="line"></span>
         </form>
 
@@ -25,9 +27,10 @@ export const renderLogin = () => {
             <form id="signup-form">
             <p class="snRegister">Registrarme con:</p>
             <input type="email" class="input-signup-email" id="signup-email" placeholder="Correo electrónico">
+            <p id = "errorMsg-signup-email"></p>
             <input type="password" class="input-signup-password" id="signup-password" placeholder="Contraseña">
-            <p id = error></p>
-            <button id="btn-create-account" name="boton" type="submit">Crear cuenta</button>
+            <p id = "errorMsg-signup-password"></p>
+            <button id="btn-create-account" name="boton">Crear cuenta</button>
             <span class="line">o</span>
             <img class="icon-gmail" id="googleSignUp" type="button" src="static/images/icons/icon-google.png" alt="Gmail">
             <img class="icon-facebook" id="facebookSignUp" type="button" src="static/images/icons/icon-facebook.png" alt="Facebook">
@@ -44,32 +47,29 @@ export const renderLogin = () => {
 }
 
 export function afterRenderLogin() {
-    //Crear cuenta con Google
+    //Iniciar sesión con Google
     const googleSignUpBtn = document.querySelector('#googleSignUp')
     googleSignUpBtn.addEventListener('click', (e) => {
         e.preventDefault();
         signUpGoogle();
-        signupForm.reset();
     });
 
-    //Crear cuenta con Facebook
+    //Iniciar sesión con Facebook
     const fbSignUpBtn = document.querySelector('#facebookSignUp')
     fbSignUpBtn.addEventListener('click', (e) => {
         e.preventDefault();
         signUpFacebook();
-        signupForm.reset();
     });
 
     // Creación de cuenta con email y password 
     const signUpBtn = document.querySelector('#btn-create-account')
-    const signupForm = document.querySelector('#signup-form');
-    const signupEmail = document.querySelector('#signup-email').value;
-    const signupPassword = document.querySelector('#signup-password').value;
-    const error = document.querySelector('#error')
-    signUpBtn.addEventListener('submit', (e) => {
+    //const signupForm = document.querySelector('#signup-form');
+    signUpBtn.addEventListener('click', (e) => {
         e.preventDefault();
+        const signupEmail = document.querySelector('#signup-email').value;
+        const signupPassword = document.querySelector('#signup-password').value;
         signUpEmail(signupEmail, signupPassword);
-        signupForm.reset();
+        
     });
 
     // Inicio de sesión con email y password
@@ -77,9 +77,8 @@ export function afterRenderLogin() {
     const signinForm = document.querySelector('#signin-form')
     const signinEmail = document.querySelector('#signin-email').value;
     const signinPassword = document.querySelector('#signin-password').value;
-    signInBtn.addEventListener('submit', (e) => {
+    signInBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        logInEmail(signinEmail, signinPassword);
-        signinForm.reset();
+        logInEmail(signinEmail, signinPassword,signinForm);
     })
 }

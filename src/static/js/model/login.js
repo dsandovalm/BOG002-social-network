@@ -53,7 +53,7 @@ export const signUpFacebook = () => {
             var errorMessage = error.message;
             // The email of the user's account used.
             var email = error.email;
-            // The firebase.auth.AuthCredential type that was used.
+            // The firebase.auth.AuthCredential typse that was used.
             var credential = error.credential;
 
             // ...
@@ -62,9 +62,10 @@ export const signUpFacebook = () => {
 
 // Inicio de sesión con email y password
 export const logInEmail = (email, password) => {
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    firebase
+        .auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-        window.location.assign('#/timeline')
+            window.location.assign('#/timeline')
         })
         .catch((error) => {
             var errorCode = error.code;
@@ -75,7 +76,7 @@ export const logInEmail = (email, password) => {
 /*Olvido de contraseña
 var auth = firebase.auth();
 var emailAddress = "user@example.com";
-
+sss
 auth.sendPasswordResetEmail(emailAddress).thens(function() {
   // Email sent.
 }).catch(function(error) {
@@ -84,14 +85,19 @@ auth.sendPasswordResetEmail(emailAddress).thens(function() {
 
 // Creación de cuenta con email y password 
 export const signUpEmail = (email, password) => {
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    //Comprobar si el usuario existe
+    firebase
+        .auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            window.location.assign('#/timeline')
+            console.log("registrado")
         })
         .catch((error) => {
             
+            console.log(error);
+
             var errorCode = error.code;
             var errorMessage = error.message;
+            
             // ..
         });
 }
