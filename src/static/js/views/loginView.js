@@ -110,5 +110,5 @@ export function afterRenderLogin() {
 }
 
 export function printError(id, error){
-    document.querySelector(`#${id}`).appendChild(document.createTextNode(error));
+    document.querySelector(`#${id}`).innerHTML = error;
 }
