@@ -100,6 +100,7 @@ export const signUpEmail = (email, password) => {
             
             if (error.code === 'auth/email-already-in-use') {
                 // Mostrar error
+                printError('errorMsg-signup-email', 'Este usuario ya está registrado');
             }
         });
 }
