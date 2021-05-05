@@ -61,7 +61,12 @@ export function afterRenderLogin() {
 
     // Creación de cuenta con email y password 
     const signUpBtn = document.querySelector('#btn-create-account')
+<<<<<<< HEAD
     const signUpPasswordMsg = document.querySelector('#errorMsg-signup-password')
+=======
+    //const signupForm = document.querySelector('#signup-form');
+    
+>>>>>>> 50acefd7070ead636e3fea54639852379775d74f
     signUpBtn.addEventListener('click', (e) => {
         e.preventDefault();
         let signupEmail = document.querySelector('#signup-email').value;
@@ -77,6 +82,7 @@ export function afterRenderLogin() {
 
     // Inicio de sesión con email y password
     const signInBtn = document.querySelector('#btn-sign-in')
+<<<<<<< HEAD
     const signInPasswordMsg = document.querySelector('#errorMsg-signin-password')
     signInBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -89,5 +95,42 @@ export function afterRenderLogin() {
         else {
             logInEmail(signinEmail, signinPassword);
         }
+=======
+    const signinForm = document.querySelector('#signin-form')
+    signInBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const signinEmail = document.querySelector('#signin-email').value;
+        const signinPassword = document.querySelector('#signin-password').value;
+        logInEmail(signinEmail, signinPassword,signinForm);
+>>>>>>> 50acefd7070ead636e3fea54639852379775d74f
     })
+
+    //Borrar errores al modificar el campo correspondiente
+
+    const signupEmailInput = document.querySelector('#signup-email');
+    const signupPasswordInput = document.querySelector('#signup-password');
+
+    signupEmailInput.addEventListener('change', (e) => {
+        document.querySelector('#errorMsg-signup-email').innerHTML = '';
+    })
+
+    signupPasswordInput.addEventListener('change', (e) => {
+        document.querySelector('#errorMsg-signup-password').innerHTML = '';
+    })
+
+    const signinEmailInput = document.querySelector('#signin-email');
+    const signinPasswordInput = document.querySelector('#signin-password');
+
+    signinEmailInput.addEventListener('change', (e) => {
+        document.querySelector('#errorMsg-signin-email').innerHTML = '';
+    })
+
+    signinPasswordInput.addEventListener('change', (e) => {
+        document.querySelector('#errorMsg-signin-password').innerHTML = '';
+    })
+
+}
+
+export function printError(id, error){
+    document.querySelector(`#${id}`).innerHTML = error;
 }

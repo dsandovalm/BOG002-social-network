@@ -47,4 +47,11 @@
     text-align: center;
 }
 
+<<<<<<< HEAD
 
+=======
+/* Errores */
+[id ^= "errorMsg"]{
+    color: #862929; ;
+}
+>>>>>>> 50acefd7070ead636e3fea54639852379775d74f
