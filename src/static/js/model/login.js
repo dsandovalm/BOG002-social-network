@@ -79,9 +79,13 @@ export const logInEmail = (email, password) => {
                 case 'auth/wrong-password':
                     printError('errorMsg-signin-password', 'Contraseña incorrecta');
                     break;
+                
+                case 'auth/invalid-email':
+                    printError('errorMsg-signin-email', 'Correo no válido');
+                    break;
 
                 case 'auth/user-not-found':
-                    printError('errorMsg-signin-email', 'Usuario incorrecto');
+                    printError('errorMsg-signin-email', 'Usuario no registrado');
                     break;
 
                 case 'auth/internal-error':
