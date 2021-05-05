@@ -1,4 +1,4 @@
-
+import {printError} from '../view/loginView.js'
 //Crear cuenta con Google
 export const signUpGoogle = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
