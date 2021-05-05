@@ -75,14 +75,12 @@ export function afterRenderLogin() {
     // Inicio de sesión con email y password
     const signInBtn = document.querySelector('#btn-sign-in')
     const signinForm = document.querySelector('#signin-form')
-    const signinEmail = document.querySelector('#signin-email').value;
-    const signinPassword = document.querySelector('#signin-password').value;
     signInBtn.addEventListener('click', (e) => {
         e.preventDefault();
+        const signinEmail = document.querySelector('#signin-email').value;
+        const signinPassword = document.querySelector('#signin-password').value;
         logInEmail(signinEmail, signinPassword,signinForm);
     })
 }
 
-export function printError(id, error){
-    document.querySelector(`#${id}`).innerHtml = error; 
-}
+export function printError(id, error){ document.querySelector(`#${id}`).appendChild(document.createTextNode(error)); }
