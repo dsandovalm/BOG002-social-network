@@ -1,6 +1,7 @@
+import { signOut } from '../model/settings.js';
+
 export const renderSettings = () => {
-           
-    const html =`
+  const html = `
         <section id="settings">
             <div class="header">
                 <div>
@@ -21,7 +22,7 @@ export const renderSettings = () => {
                     <p id="settPassword">Cambiar contraseña</p>
                     </div>
                     <div>
-                    <p type=button>Cerrar sesión</p>
+                    <a href="#" id="signOut">Cerrar sesión</a>
                     <p>Desactivar cuenta</p>
                     </div>
                 </div>
@@ -29,12 +30,17 @@ export const renderSettings = () => {
                     
                 </div>
             </div>
-        </section>
-        `  
-        let div = document.createElement('div');
-        div.innerHTML = html;
-        
-        return div
+        </section> 
+        `;
+  const div = document.createElement('div');
+  div.innerHTML = html;
+  return div;
+};
+
+export function afterSettingsRender() {
+const btnSignOut = document.getElementById('signOut');
+btnSignOut.addEventListener('click', (e) => {
+  e.preventDefault();
+  signOut();
+});
 }
-
-

@@ -1,6 +1,6 @@
 import { renderTimeline } from '../views/timelineView.js';
 import { renderLogin, afterRenderLogin } from '../views/loginView.js';
-import { renderSettings } from '../views/settingsView.js';
+import { renderSettings, afterSettingsRender } from '../views/settingsView.js';
 
 let container = document.getElementById('root');
 
@@ -18,6 +18,7 @@ export const init = () => {
             break;
         case '#/settings':
             container.appendChild(renderSettings());
+            afterSettingsRender();
             break;
         default: 
             container.appendChild(renderLogin());

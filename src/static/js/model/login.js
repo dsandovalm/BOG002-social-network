@@ -49,19 +49,19 @@ export const signUpFacebook = () => {
             var accessToken = credential.accessToken;
 
             // ...
-        })
-        .catch((error) => {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // The email of the user's account used.
-            var email = error.email;
-            // The firebase.auth.AuthCredential typse that was used.
-            var credential = error.credential;
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential typse that was used.
+      var credential = error.credential;
 
-            // ...
-        });
-}
+      // ...
+    });
+};
 
 // - - - EMAIL Y PASSWORD
 
@@ -128,14 +128,3 @@ export const signUpEmail = (email, password) => {
             }
         });
 }
-
-/*Olvido de contraseña
-var auth = firebase.auth();
-var emailAddress = "user@example.com";
-sss
-auth.sendPasswordResetEmail(emailAddress).thens(function() {
-  // Email sent.
-}).catch(function(error) {
-  // An error happened.
-});*/
-

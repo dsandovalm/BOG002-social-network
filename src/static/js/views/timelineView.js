@@ -1,5 +1,5 @@
 export const renderTimeline = () => {
-  let html = `
+  const html = `
       <section id="muro">
 
       <header>
@@ -22,8 +22,8 @@ export const renderTimeline = () => {
 
     </section>`;
 
-  let div = document.createElement('div');
+  const div = document.createElement('div');
   div.innerHTML = html;
 
-  return div
-}
+  return div;
+};
