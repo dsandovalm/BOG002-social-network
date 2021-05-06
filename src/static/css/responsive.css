@@ -7,20 +7,21 @@
     #Presentation {display: none}
     #muro header img{display: none}
 
-    #signin-form h1, #recoverPassword h1{
+    #register h1, #recoverPassword h1{
+        text-align: center;
         margin: 0;
         padding: 10px;
         font-size: 50px
+    }
+    
+    .container-recover{
+        width: auto;
+        height: fit-content;
     }
 
     #muro header input{
         width: auto;
         height: 40px;
-    }
-
-    .container-recover{
-        width: 600;
-        height: fit-content;
     }
 }
 
@@ -30,10 +31,10 @@
   and (min-width: 800px){
 
     /*Sección inicio de sesión*/
-    #signin-form  h1 {display: none}
+    #register  h1 {display: none}
     #muro footer {display: none}
 
-    #Presentation h1{font-size: 90px}
+    #Presentation h1, #recoverPassword h1{font-size: 70px}
     .header h1{font-size: 60px}
 
     #inicio{
@@ -48,12 +49,14 @@
         flex: 1;
     }
 
+    /*Sección timeline*/
     #muro header input{
         width: 400px;
     }
 
+    /*Sección recuperación de contraseña*/   
     .container-recover{
-        width: 600;
+        width: 600px;
         height: fit-content;
     }
 }

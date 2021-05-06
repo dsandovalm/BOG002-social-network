@@ -1,17 +1,33 @@
 /*Estilo página recuperación de contraseña*/
 
+/*Configuracion de clases containers recover*/
+.container-recover {
+    padding: 20px;
+    background: var(--amarillo);
+    border-radius: 30px;
+    
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+
+}
+
 .container-recover h2{
     font-family: 'Fredoka One', cursive;
     font-size: 20px;
 }
 
-/*Configuracion de clases containers amarillos*/
-.container-recover {
-    padding: 20px;
-    width: auto;
-    height: fit-content;
-    background: var(--amarillo);
-    border-radius: 30px;
-    text-align: center;
+.input-recover{
+    margin-bottom: 50px;
+}
+
+/*Línea divisoria título del contenedor*/
+.line-recover{
+    border-bottom: 2px solid #000000;
+    display: block;
+    position: relative;
 }
 
