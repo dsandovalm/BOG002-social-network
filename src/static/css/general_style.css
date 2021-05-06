@@ -2,7 +2,10 @@
 
 @import url(https://fonts.googleapis.com/css2?family=Archivo&family=Fredoka+One&display=swap);
 
-body {margin:0;}
+body {
+    margin:0;
+    height: 100%;
+}
 
 /* Selector de clases que comiencen con 'icon', configuración de íconos en toda la app*/
 [class ^= "icon"]{
@@ -24,6 +27,17 @@ body {margin:0;}
     background-color: var(--morado);
 }
 
+/* Configuración inputs*/
+[class ^= "input"]{
+    width: 250px;
+    height: 30px;
+    margin: 10px;
+    padding: 6px; 
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 15px; 
+    font-size: 15px;
+}
 
 /* Variables de definción de colores*/
 :root {
@@ -46,6 +60,14 @@ section {
 }
 
 /*Parámetros título Walkter en las secciones que se use como h1*/
-h1 {
-    font-family: 'Fredoka One', cursive;
+h1 {font-family: 'Fredoka One', cursive}
+
+.footer{
+    background: var(--verde);
+    height: 35px;
+    text-align:center;
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
 }
