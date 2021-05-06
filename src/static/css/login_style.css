@@ -1,7 +1,7 @@
 /*Sección de inicio de sesión*/
 
 #register-signup{display: none}
-
+#link-login{display: none}
 /* Imagen en landing page*/
 .img-login {
     width: 600px;
@@ -15,9 +15,9 @@
 }
 
 /*Parametros del link en caso de olvidar contraseña*/
-.link-forgetMyPassword {
+.link {
     margin-top: 0px;
-    font-size: 13px;
+    font-size: 15px;
     cursor: pointer;
     color: rgb(0, 162, 255);
 }

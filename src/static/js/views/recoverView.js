@@ -4,10 +4,9 @@ export const renderRecover = () => {
     let html = `
     <section id = "recoverPassword">
         <h1>WALKTER</h1>
-        <span class="line-recover"></span>
         <form class = "container-recover">
             <h2>Recuperación de contraseña</h2>
-            <p> Ingresa tu correo electrónico para recibir un mensaje con la información para recuperar la contraseña </p>
+            <p> Ingresa tu correo electrónico para recibir un mensaje con la información de recuperación de contraseña </p>
             <input type = "email" id = "input-email-recover" class = "input-recover" placeholder = "Correo electrónico"></input><br>
             <p id = "msg-recover"></p>
             <p id = "errorMsg-recover"></p>

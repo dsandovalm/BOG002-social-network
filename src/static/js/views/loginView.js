@@ -13,15 +13,21 @@ export const renderLogin = () => {
         <div id="register">
             <h1>WALKTER</h1>
             <form id="signin-form" class = "container-signin">
-                <p>Inicia sesión con:</p>
-                <img class="icon-gmail" id="googleSignUp" type="button" src="static/images/icons/icon-google.png" alt="Gmail">
-                <img class="icon-facebook" id="facebookSignUp" type="button" src="static/images/icons/icon-facebook.png" alt="Facebook">
-                <p class = "line-login">o</p>
-                <input type="email" class="input-email" id="signin-email" placeholder="Correo electrónico"><br>
-                <input type="password" class="input-password" id="signin-password" placeholder="Contraseña">
-                <p id = "errorMsg-signin"></p>
-                <a href="#/recoverPassword" class="link-forgetMyPassword" type="button">Recuperar la contraseña</a> <br>
-                <button id="btn-sign-in">Iniciar sesión</button>
+                <div>
+                    <p>¿Tienes una cuenta?</p>
+                    <a id = "link-login" class = "link">Inicia sesión</a>
+                </div>
+                <div id = "register-signin">
+                    <p>Inicia sesión con:</p>
+                    <img class="icon-gmail" id="googleSignUp" type="button" src="static/images/icons/icon-google.png" alt="Gmail">
+                    <img class="icon-facebook" id="facebookSignUp" type="button" src="static/images/icons/icon-facebook.png" alt="Facebook">
+                    <p class = "line-login">o</p>
+                    <input type="email" class="input-email" id="signin-email" placeholder="Correo electrónico"><br>
+                    <input type="password" class="input-password" id="signin-password" placeholder="Contraseña">
+                    <p id = "errorMsg-signin"></p>
+                    <a href="#/recoverPassword" class="link" type="button">Recuperar la contraseña</a><br>
+                    <button id="btn-sign-in">Iniciar sesión</button>
+                </div>
             </form> 
                 
             <form id="signup-form" class="container-signup">
@@ -35,8 +41,10 @@ export const renderLogin = () => {
                     <input type="email" class="input-signup-email" id="signup-email" placeholder="Correo electrónico"><br>
                     <input type="password" class="input-signup-password" id="signup-password" placeholder="Contraseña">
                     <p id = "errorMsg-signup"></p>
+                    <button id="btn-create-account">Crear cuenta</button> 
                 </div>
-                <button id="btn-create-account">Crear cuenta</button>                
+                <a id = "link-signup" class="link" type="button">Registrate</a>
+
             </form>
         </div>
 
@@ -49,6 +57,27 @@ export const renderLogin = () => {
 }
 
 export function afterRenderLogin() {
+    
+    //Ocultar y mostrar containers en interfaz login
+    const containerSignUp = document.querySelector('#register-signup')
+    const containerSignIn = document.querySelector('#register-signin')
+    const registerBtn = document.querySelector('#link-signup')
+    const loginBtn = document.querySelector('#link-login')
+
+    registerBtn.addEventListener('click', (e) =>{
+        registerBtn.style.display = 'none'
+        containerSignIn.style.display = 'none'
+        containerSignUp.style.display = 'block'
+        loginBtn.style.display = 'block'
+    })
+
+    loginBtn.addEventListener('click', (e) =>{
+        registerBtn.style.display = 'block'
+        containerSignIn.style.display = 'block'
+        containerSignUp.style.display = 'none'
+        loginBtn.style.display = 'none'
+    })
+
     //Iniciar sesión con Google
     const googleSignUpBtn = document.querySelector('#googleSignUp')
     googleSignUpBtn.addEventListener('click', (e) => {
@@ -65,15 +94,10 @@ export function afterRenderLogin() {
 
     // Creación de cuenta con email y password 
     const signUpBtn = document.querySelector('#btn-create-account');
-    const containerSignUp = document.querySelector('#register-signup')
-    const containerSignIn = document.querySelector('#signin-form')
     signUpBtn.addEventListener('click', (e) => {
-        
         let signupEmail = document.querySelector('#signup-email').value;
         let signupPassword = document.querySelector('#signup-password').value;   
         e.preventDefault();
-        containerSignIn.style.display = 'none'
-        containerSignUp.style.display = 'block'
         signUpEmail(signupEmail, signupPassword);
     });
 
