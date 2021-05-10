@@ -1,5 +1,5 @@
 import {
-  signUpGoogle, signUpFacebook, logInEmail, signUpEmail,
+  signUpGoogle, logInEmail, signUpEmail,
 } from '../model/login.js';
 
 export const renderLogin = () => {
@@ -22,7 +22,6 @@ export const renderLogin = () => {
                 <div id = "register-signin">
                     <p>Inicia sesión con:</p>
                     <img class="icon-gmail" id="googleSignUp" type="button" src="static/images/icons/icon-google.png" alt="Gmail">
-                    <img class="icon-facebook" id="facebookSignUp" type="button" src="static/images/icons/icon-facebook.png" alt="Facebook">
                     <p class = "line-login">o</p>
                     <input type="email" class="input-email" id="signin-email" placeholder="Correo electrónico"><br>
                     <input type="password" class="input-password" id="signin-password" placeholder="Contraseña">
@@ -37,7 +36,6 @@ export const renderLogin = () => {
                 <div id = "register-signup">
                     <p>Inicia sesión con:</p>
                     <img class="icon-gmail" id="googleSignUp" type="button" src="static/images/icons/icon-google.png" alt="Gmail">
-                    <img class="icon-facebook" id="facebookSignUp" type="button" src="static/images/icons/icon-facebook.png" alt="Facebook">
                     <p class = "line-login">o</p>
                     <p>Registrate con:</p>
                     <input type="email" class="input-signup-email" id="signup-email" placeholder="Correo electrónico"><br>
@@ -86,20 +84,17 @@ export function afterRenderLogin() {
     signUpGoogle();
   });
 
-  // Iniciar sesión con Facebook
-  const fbSignUpBtn = document.querySelector('#facebookSignUp');
-  fbSignUpBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    signUpFacebook();
-  });
-
   // Creación de cuenta con email y password
   const signUpBtn = document.querySelector('#btn-create-account');
   signUpBtn.addEventListener('click', (e) => {
     const signupEmail = document.querySelector('#signup-email').value;
     const signupPassword = document.querySelector('#signup-password').value;
     e.preventDefault();
-    signUpEmail(signupEmail, signupPassword);
+    signUpEmail(signupEmail, signupPassword).then((result) => {
+      if (result.error) {
+        document.querySelector('#errorMsg-signin').innerHTML = result.message;
+      }
+    });
   });
 
   // Inicio de sesión con email y password
@@ -108,7 +103,11 @@ export function afterRenderLogin() {
     const signinEmail = document.querySelector('#signin-email').value;
     const signinPassword = document.querySelector('#signin-password').value;
     e.preventDefault();
-    logInEmail(signinEmail, signinPassword);
+    logInEmail(signinEmail, signinPassword).then((result) => {
+      if (result.error) {
+        document.querySelector('#errorMsg-signin').innerHTML = result.message;
+      }
+    });
   });
 
   // Borrar errores al modificar el campo correspondiente en el formulario sign up

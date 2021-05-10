@@ -9,7 +9,5 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-/* const auth = firebase.auth();
-const bd = firebase.firestore(); */
-
-// Admin
+const auth = firebase.auth();
+const bd = firebase.firestore();
