@@ -19,28 +19,28 @@ Puedes acceder a la versión web haciendo click [aqui](https://dsandovalm.github
 #### Baja fidelidad ####
 
 - Sign in
-![Sign in Desktop](./src/images/figma/sn_ld_signin.png)
-![Sign in Phone](./src/images/figma/sn_lp_signin.png)
+![Sign in Desktop](./src/static/images/figma/sn_ld_signin.png)
+![Sign in Phone](./src/static/images/figma/sn_lp_signin.png)
 
 - Sign up
-![Sign up Desktop](./src/images/figma/sn_ld_signup.png)
-![Sign up Phone](./src/images/figma/sn_lp_signup.png)
+![Sign up Desktop](./src/static/images/figma/sn_ld_signup.png)
+![Sign up Phone](./src/static/images/figma/sn_lp_signup.png)
 
 - Inicio: mapa. Publicaciones en pop ups
-![Timeline Desktop](./src/images/figma/sn_ld_timeline.png)
-![Timeline Phone](./src/images/figma/sn_lp_timeline.png)
+![Timeline Desktop](./src/static/images/figma/sn_ld_timeline.png)
+![Timeline Phone](./src/static/images/figma/sn_lp_timeline.png)
 
 - Perfil de usuario
-![Timeline Desktop](./src/images/figma/sn_ld_profile.png)
-![Timeline Phone](./src/images/figma/sn_lp_profile.png)
+![Timeline Desktop](./src/static/images/figma/sn_ld_profile.png)
+![Timeline Phone](./src/static/images/figma/sn_lp_profile.png)
 
 - Configuración
-![Settings Desktop](./src/images/figma/sn_ld_settings.png)
-![Settings Phone](./src/images/figma/sn_lp_settings.png)
+![Settings Desktop](./src/static/images/figma/sn_ld_settings.png)
+![Settings Phone](./src/static/images/figma/sn_lp_settings.png)
 
 - Creación de Publicaciones
-![Create post](./src/images/figma/sn_lp_create.png)
-![Camera](./src/images/figma/sn_lp_camera.png)
+![Create post](./src/static/images/figma/sn_lp_create.png)
+![Camera](./src/static/images/figma/sn_lp_camera.png)
 
 
 **Feedback recibido**
