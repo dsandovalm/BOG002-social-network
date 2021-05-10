@@ -9,12 +9,3 @@ export const signOut = () => {
       // An error happened.
     });
 };
-export 
-
-var user = firebase.auth().currentUser;
-
-user.delete().then(function() {
-  // User deleted.
-}).catch(function(error) {
-  // An error happened.
-});

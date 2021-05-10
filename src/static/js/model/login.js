@@ -1,64 +1,63 @@
-import {printError} from '../views/loginView.js';
+import { printHtml } from '../controler/loginControler.js';
 
 // - - - GOOGLE Y FACEBOOK
 
-//Crear cuenta con Google
+// Crear cuenta con Google
 export const signUpGoogle = () => {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    firebase
-        .auth()
-        .signInWithPopup(provider)
-        .then((result) => {
-            window.location.assign('#/timeline')
-            /** @type {firebase.auth.OAuthCredential} */
-            var credential = result.credential;
+  const provider = new firebase.auth.GoogleAuthProvider();
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then((/* result */) => {
+      window.location.assign('#/timeline');
+      /** @type {firebase.auth.OAuthCredential} */
+      // const credential = result.credential;
 
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            var token = credential.accessToken;
-            // The signed-in user info.
-            var user = result.user;
-            // ...
-        }).catch((error) => {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // The email of the user's account used.
-            var email = error.email;
-            // The firebase.auth.AuthCredential type that was used.
-            var credential = error.credential;
-            // ...
-        });
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      // const token = credential.accessToken;
+      // The signed-in user info.
+      // const user = result.user;
+      // ...
+    }).catch((/* error */) => {
+      /* // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      const credential = error.credential;
+      // ... */
+    });
 };
-
 
 // Crear cuenta con Facebook
 
 export const signUpFacebook = () => {
-    var provider = new firebase.auth.FacebookAuthProvider();
-    firebase
-        .auth()
-        .signInWithPopup(provider)
-        .then((result) => {
-            window.location.assign('#/timeline')
-            /** @type {firebase.auth.OAuthCredential} */
-            var credential = result.credential;
+  const provider = new firebase.auth.FacebookAuthProvider();
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then((/* result */) => {
+      window.location.assign('#/timeline');
+      /** @type {firebase.auth.OAuthCredential} */
+      // const credential = result.credential;
 
-            // The signed-in user info.
-            var user = result.user;
+      // The signed-in user info.
+      // const user = result.user;
 
-            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-            var accessToken = credential.accessToken;
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      // const accessToken = credential.accessToken;
 
-            // ...
+      // ...
     })
-    .catch((error) => {
+    .catch((/* error */) => {
       // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
       // The email of the user's account used.
-      var email = error.email;
+      // const email = error.email;
       // The firebase.auth.AuthCredential typse that was used.
-      var credential = error.credential;
+      // const credential = error.credential;
 
       // ...
     });
@@ -68,30 +67,27 @@ export const signUpFacebook = () => {
 
 // Inicio de sesión con email y password
 export const logInEmail = (email, password) => {
-    firebase
-        .auth().signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            window.location.assign('#/timeline')
-        })
-        .catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            printError('errorMsg-signin', errorMessage );
-        });
-}
+  firebase
+    .auth().signInWithEmailAndPassword(email, password)
+    .then((/* userCredential */) => {
+      window.location.assign('#/timeline');
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      printHtml('errorMsg-signin', errorMessage);
+    });
+};
 
-// Creación de cuenta con email y password 
+// Creación de cuenta con email y password
 export const signUpEmail = (email, password) => {
-    //Comprobar si el usuario existe
-    firebase
-        .auth().createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            window.location.assign('#/timeline')
-        })
-        .catch((error) => {
-            
-            let errorCode = error.code;
-            let errorMessage = error.message;
-            printError('errorMsg-signup', errorMessage );
-        });
-}
+  const promesa = firebase
+    .auth().createUserWithEmailAndPassword(email, password)
+    .then((/* userCredential */) => {
+      window.location.assign('#/timeline');
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      printHtml('errorMsg-signup', errorMessage);
+    });
+  return promesa;
+};
