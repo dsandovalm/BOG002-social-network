@@ -1,5 +1,5 @@
 function createPost( ubicationReport, photoReport, descriptionReport ) {
-  return {
+  let post = {
     date: new Date(),
     ubication: ubicationReport,
     photo: photoReport,
@@ -11,16 +11,13 @@ function createPost( ubicationReport, photoReport, descriptionReport ) {
       views: 0
     }
   }
-}
-
-db.collection("users").add({
-    first: "Ada",
-    last: "Lovelace",
-    born: 1815
-})
-.then((docRef) => {
+  
+  db.collection("Posts").add({ post })
+  .then((docRef) => {
     console.log("Document written with ID: ", docRef.id);
-})
-.catch((error) => {
+  })
+  .catch((error) => {
     console.error("Error adding document: ", error);
-});
+  }); 
+  return post
+}
