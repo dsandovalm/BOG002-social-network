@@ -1,13 +1,15 @@
 // Cerrar sesión//
 export const signOut = () => {
-  firebase
+  const promesa = firebase
     .auth().signOut()
-    .then(() => {
+    .then((user) => {
       window.location.assign('#/login');
       // Sign-out successfl.
-    }).catch((error) => {
+      return user;
+    }).catch((error) =>
       // An error happened.
-    });
+      error);
+  return promesa;
 };
 
 /*export 

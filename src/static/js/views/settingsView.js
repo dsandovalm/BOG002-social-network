@@ -38,9 +38,9 @@ export const renderSettings = () => {
 };
 
 export function afterSettingsRender() {
-const btnSignOut = document.getElementById('signOut');
-btnSignOut.addEventListener('click', (e) => {
-  e.preventDefault();
-  signOut();
-});
+  const btnSignOut = document.getElementById('signOut');
+  btnSignOut.addEventListener('click', (e) => {
+    e.preventDefault();
+    signOut();
+  });
 }

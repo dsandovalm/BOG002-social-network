@@ -3,33 +3,32 @@ import { renderLogin, afterRenderLogin } from '../views/loginView.js';
 import { renderSettings, afterSettingsRender } from '../views/settingsView.js';
 import { renderRecover, afertRenderRecover } from '../views/recoverView.js';
 
-let container = document.getElementById('root');
+const container = document.getElementById('root');
 
 export const init = () => {
-    const url = window.location.hash
-    container.innerHTML = '';
-    
-    switch(url){
-        case '#/login':
-            container.appendChild(renderLogin());
-            afterRenderLogin();
-            break;
-        case '#/timeline':
-            container.appendChild(renderTimeline());
-            afterRenderTimeLine();
-            break;
-        case '#/settings':
-            container.appendChild(renderSettings());
-            afterSettingsRender();
-            break;
-        case '#/recoverPassword':
-            container.appendChild(renderRecover());
-            afertRenderRecover();
-            break;
+  const url = window.location.hash;
+  container.innerHTML = '';
 
-        default: 
-            container.appendChild(renderLogin());
-            afterRenderLogin();
-            break;
-    }
-}
+  switch (url) {
+    case '#/login':
+      container.appendChild(renderLogin());
+      afterRenderLogin();
+      break;
+    case '#/timeline':
+      container.appendChild(renderTimeline());
+      afterRenderTimeLine();
+      break;
+    case '#/settings':
+      container.appendChild(renderSettings());
+      afterSettingsRender();
+      break;
+    case '#/recoverPassword':
+      container.appendChild(renderRecover());
+      afertRenderRecover();
+      break;
+    default:
+      container.appendChild(renderLogin());
+      afterRenderLogin();
+      break;
+  }
+};
