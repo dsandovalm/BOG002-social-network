@@ -1,3 +1,12 @@
+function initialize(){
+  var infowindow = new google.maps.InfoWindow();
+  var map = new google.maps.Map(
+    document.getElementById("map_canvas"), {
+      center: new google.maps.LatLng(37.4419, -122.1419),
+      zoom: 13,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyBiVALgySDsp6bALlL-FP2bBZeQs7msfw4",
@@ -11,5 +20,3 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const bd = firebase.firestore();
-
-// Admin
