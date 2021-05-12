@@ -4,10 +4,8 @@ export const signOut = () => {
     .auth().signOut()
     .then((user) => {
       window.location.assign('#/login');
-      // Sign-out successfl.
       return user;
     }).catch((error) =>
-      // An error happened.
       error);
   return promesa;
 };
