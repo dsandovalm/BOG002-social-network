@@ -1,6 +1,6 @@
 import { renderTimeline } from '../views/timelineView.js';
 import { renderLogin, afterRenderLogin } from '../views/loginView.js';
-import { renderSettings, afterSettingsRender } from '../views/settingsView.js';
+import { renderSettings, afterRenderSettings } from '../views/settingsView.js';
 import { renderRecover, afertRenderRecover } from '../views/recoverView.js';
 
 const container = document.getElementById('root');
@@ -19,7 +19,7 @@ export const init = () => {
       break;
     case '#/settings':
       container.appendChild(renderSettings());
-      afterSettingsRender();
+      afterRenderSettings();
       break;
     case '#/recoverPassword':
       container.appendChild(renderRecover());
