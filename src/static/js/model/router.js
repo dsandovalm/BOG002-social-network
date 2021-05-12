@@ -1,4 +1,4 @@
-import { renderTimeline } from '../views/timelineView.js';
+import { renderTimeline, afterRenderTimeline } from '../views/timelineView.js';
 import { renderLogin, afterRenderLogin } from '../views/loginView.js';
 import { renderSettings, afterRenderSettings } from '../views/settingsView.js';
 import { renderRecover, afertRenderRecover } from '../views/recoverView.js';
@@ -16,6 +16,7 @@ export const init = () => {
   switch (url) {
     case '#/timeline':
       container.appendChild(renderTimeline());
+      afterRenderTimeline()
       break;
     case '#/settings':
       container.appendChild(renderSettings());
@@ -45,10 +46,10 @@ export const init = () => {
   }
 };
 
-/*  firebase.auth().onAuthStateChanged(function(user) {
+firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     window.location.assign('#/timeline');
   } else {
     // No user is signed in.
   }
-});  */
+}); 
