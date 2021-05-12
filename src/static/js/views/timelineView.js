@@ -9,8 +9,8 @@ export const renderTimeline = () => {
         <input type="text" maxlength="100" autocomplete="off">
         <img id=icon-lupa src="static/images/icons/icon-lupa.png">
       </header>
-      <input type = "text" id = "text_lat" placeholder = "latitud"></input>
-      <input type = "text" id = "text_lng" placeholder = "longitud"></input>
+      <input type = "text" id = "txt-lat" placeholder = "latitud"></input>
+      <input type = "text" id = "txt-lng" placeholder = "longitud"></input>
       <button id = "addCoords">Agregar</button>
       <div id="map"></div>
 
@@ -31,7 +31,9 @@ export function afterRenderTimeLine() {
 
  const addBtn = document.querySelector('#addCoords');
  addBtn.addEventListener('click', (e) =>{
-
+  let u = {};
+  u.lat = document.querySelector('#txt-lat').value;
+  u.lng = document.querySelector('#txt-lng').value;
+   saveCoords()
  })
-  
 }
