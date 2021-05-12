@@ -7,13 +7,13 @@ const container = document.getElementById('root');
 
 export const init = () => {
   const url = window.location.hash;
+  const user = firebase.auth().currentUser;
   container.innerHTML = '';
 
+  if (user) {
+    // User is signed in.
+    console.log('Has iniciado sesion');
   switch (url) {
-    case '#/login':
-      container.appendChild(renderLogin());
-      afterRenderLogin();
-      break;
     case '#/timeline':
       container.appendChild(renderTimeline());
       break;
@@ -21,13 +21,34 @@ export const init = () => {
       container.appendChild(renderSettings());
       afterRenderSettings();
       break;
+    default:
+      window.location.assign('#/timeline');
+      break;
+  }
+
+  } else {
+    // No user is signed in.
+    console.log('No has iniciado sesion');
+      switch (url) {
+    case '#/login':
+      container.appendChild(renderLogin());
+      afterRenderLogin();
+      break;
     case '#/recoverPassword':
       container.appendChild(renderRecover());
       afertRenderRecover();
       break;
     default:
-      container.appendChild(renderLogin());
-      afterRenderLogin();
+      window.location.assign('#/login');
       break;
+}
   }
 };
+
+/*  firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    window.location.assign('#/timeline');
+  } else {
+    // No user is signed in.
+  }
+});  */
