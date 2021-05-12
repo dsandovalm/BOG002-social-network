@@ -13,36 +13,36 @@ export const init = () => {
   if (user) {
     // User is signed in.
     console.log('Has iniciado sesion');
-  switch (url) {
-    case '#/timeline':
-      container.appendChild(renderTimeline());
-      afterRenderTimeline()
-      break;
-    case '#/settings':
-      container.appendChild(renderSettings());
-      afterRenderSettings();
-      break;
-    default:
-      window.location.assign('#/timeline');
-      break;
-  }
-
-  } else {
-    // No user is signed in.
-    console.log('No has iniciado sesion');
       switch (url) {
-    case '#/login':
-      container.appendChild(renderLogin());
-      afterRenderLogin();
-      break;
-    case '#/recoverPassword':
-      container.appendChild(renderRecover());
-      afertRenderRecover();
-      break;
-    default:
-      window.location.assign('#/login');
-      break;
-}
+        case '#/timeline':
+          container.appendChild(renderTimeline());
+          afterRenderTimeline()
+          break;
+        case '#/settings':
+          container.appendChild(renderSettings());
+          afterRenderSettings();
+          break;
+        default:
+          window.location.assign('#/timeline');
+          break;
+      }
+
+      } else {
+        // No user is signed in.
+        console.log('No has iniciado sesion');
+          switch (url) {
+        case '#/login':
+          container.appendChild(renderLogin());
+          afterRenderLogin();
+          break;
+        case '#/recoverPassword':
+          container.appendChild(renderRecover());
+          afertRenderRecover();
+          break;
+        default:
+          window.location.assign('#/login');
+          break;
+    }
   }
 };
 
