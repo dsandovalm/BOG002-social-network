@@ -21,7 +21,7 @@ export const renderRecover = () => {
   return div;
 };
 
-export function afertRenderRecover() {
+export function afterRenderRecover() {
   // Recuperar contraseña
   const recoverBtn = document.querySelector('#btn-recover');
   recoverBtn.addEventListener('click', (e) => {

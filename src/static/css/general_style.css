@@ -33,17 +33,17 @@ body {
     height: 30px;
     margin: 10px;
     padding: 6px; 
-    border: 1px solid #000000;
     box-sizing: border-box;
     border-radius: 15px; 
     font-size: 15px;
+    border:none;
 }
 
 /* Variables de definción de colores*/
 :root {
     --amarillo: #FCDB4B; 
     --morado: #9f4bf2; 
-    --verde: #05ce78;
+    --verde: #31e296d8;
 }
 
 /* Todo el archivo con tipografía, tamaño y borde igual*/

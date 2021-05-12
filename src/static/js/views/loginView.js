@@ -17,11 +17,10 @@ export const renderLogin = () => {
             <form id="signin-form" class = "container-signin">
                 <div>
                     <p>¿Tienes una cuenta?</p>
-                    <a id = "link-login" class = "link">Inicia sesión</a>
+                    <a id = "link-login" class = "link">Iniciar sesión</a>
                 </div>
                 <div id = "register-signin">
-                    <p>Inicia sesión con:</p>
-                    <img class="icon-gmail" id="googleSignUp" type="button" src="static/images/icons/icon-google.png" alt="Gmail">
+                    <button id="btn-google" class="btn-google"><img class="icon-gmail" src="static/images/icons/icon-google.png" alt="Gmail">Iniciar sesión con Google</button>
                     <p class = "line-login">o</p>
                     <input type="email" class="input-email" id="signin-email" placeholder="Correo electrónico"><br>
                     <input type="password" class="input-password" id="signin-password" placeholder="Contraseña">
@@ -34,8 +33,7 @@ export const renderLogin = () => {
             <form id="signup-form" class="container-signup">
                 <p class="title-Newaccount">¿No tienes una cuenta?</p>
                 <div id = "register-signup">
-                    <p>Inicia sesión con:</p>
-                    <img class="icon-gmail" id="googleSignUp" type="button" src="static/images/icons/icon-google.png" alt="Gmail">
+                    <button id="btn-google2" class="btn-google"><img class="icon-gmail" src="static/images/icons/icon-google.png" alt="Gmail">Iniciar sesión con Google</button>
                     <p class = "line-login">o</p>
                     <p>Registrate con:</p>
                     <input type="email" class="input-signup-email" id="signup-email" placeholder="Correo electrónico"><br>
@@ -78,7 +76,14 @@ export function afterRenderLogin() {
   });
 
   // Iniciar sesión con Google
-  const googleSignUpBtn = document.querySelector('#googleSignUp');
+  const googleSignInBtn = document.querySelector('#btn-google');
+  googleSignInBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    signUpGoogle();
+  });
+
+  // Registro con Google
+  const googleSignUpBtn = document.querySelector('#btn-google2');
   googleSignUpBtn.addEventListener('click', (e) => {
     e.preventDefault();
     signUpGoogle();
@@ -92,7 +97,7 @@ export function afterRenderLogin() {
     e.preventDefault();
     signUpEmail(signupEmail, signupPassword).then((result) => {
       if (result.error) {
-        document.querySelector('#errorMsg-signin').innerHTML = result.message;
+        document.querySelector('#errorMsg-signup').innerHTML = result.message;
       }
     });
   });

@@ -77,3 +77,14 @@
     color: #862929; 
     font-size: 13px;
 }
+
+/*Botón inicio de sesión con Google*/
+.btn-google{
+    padding: 3px;
+    background-color:rgb(255, 255, 255);
+    color: black;
+    border-radius: 10px;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+}
