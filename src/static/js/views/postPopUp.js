@@ -51,3 +51,51 @@ export function newReportAfterRender(closeFunction) {
     const btnClose = document.getElementById('close');
     btnClose.addEventListener('click', closeFunction);
 }
+
+
+export const showReport = (user,post) => {
+    let htmlText = `
+<div>
+  <div> 
+    <img class="profile-small" src="${user.profilepic}">
+    <div>
+      <div>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+      </div>
+      <p>${user.name}</p>
+  </div>
+  <div>
+    <p>${post.date}</p>
+    <p>Tipo de Reporte</p>
+   <p>${post.type}</p>
+  </div>
+</div>
+
+<div>
+  <div>
+    <h3>Descripción del reporte</h3>
+    <p>${post.description}</p>
+  </div>
+  <img src="${post.img}"> 
+</div>
+
+<div class="reactions">
+  <div class="btn-reaction like"> 
+    <img src="" alt="Es Útil">
+  </div>
+  <div class="btn-reaction doubt"> 
+    <img src="" alt="Lo dudo">
+  </div>
+  <div class="btn-reaction dislike"> 
+    <img src="" alt="No es Útil">
+  </div>
+</div>`;
+    const div = document.createElement('div');
+    div.className = 'report';
+    div.innerHTML = htmlText;
+    return div;
+}
