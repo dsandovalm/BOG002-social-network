@@ -86,20 +86,39 @@ const modal = {
     },
 }
 
-export const modalCreate = {
-    render() {
-        return modal.render(modal.create);
+const buttons = {
+    close: (closeFunction) => {
+        return {
+            id:'close', 
+            method: closeFunction
+        }
     },
+    create: {
+        id:'btnPost', 
+        method: () => {
+            let description = document.getElementById('reportDesc').value;
+            let repImage = document.getElementById('uploadImg').files[0];
+            let repType = document.getElementById('reportType').value;
+            createPost({ lat: 0, lng: 0 }, repType, repImage, description);}
+    }, 
+    like: {
+        id:'btnLike', 
+        method: reactPost (postId,'like')
+    },
+    doubt: {
+        id:'btnDoubt', 
+        method: reactPost (postId,'doubt')
+    },
+    dislike: {
+        id:'btnDislike', 
+        method: reactPost (postId,'dislike')
+    },
+}
+
+export const modalCreate = {
+    render() { return modal.render(modal.create); },
     afterRender(closeFunction){
-        modal.afterRender([
-            {id:'close', method: closeFunction},
-            {id:'btnPost', method: () => {
-                let description = document.getElementById('reportDesc').value;
-                let repImage = document.getElementById('uploadImg').files[0];
-                let repType = document.getElementById('reportType').value;
-                createPost({ lat: 0, lng: 0 }, repType, repImage, description);}
-            },
-        ]);
+        modal.afterRender([buttons.close(closeFunction), buttons.create]);
     }
 }
 
@@ -109,30 +128,10 @@ export const modalView = {
     },
     afterRender(closeFunction,postId){
         modal.afterRender([
-            {id:'close', method: closeFunction},
-            {id:'btnLike', method: reactPost (postId,'like')},
-            {id:'btnDoubt', method: reactPost (postId,'doubt')},
-            {id:'btnDislike', method: reactPost (postId,'dislike')},
+            buttons.close(closeFunction), 
+            buttons.like, 
+            buttons.doubt,
+            buttons.dislike
         ]);
-    }
-}
-
-export const viewMiniPost = {
-    render: (post) => {
-        // El mini report es una imagen flotante de radio R y centro en X,Y. 
-        // Por ahora no me preocupo por definir como se grafica.
-        let img = document.createElement('img');
-        img.setAttribute('src', post.img);
-        let div = document.createElement('div');
-        div.className = "miniReport";
-        div.setAttribute('id', post.id);
-        div.appendChild(img)
-        return div;
-    },
-    afterRender: (post, openFunction) => {
-        const miniPost = document.getElementById(post.id);
-        miniPost.addEventListener('click', () => {
-            openFunction(post)
-        })
     }
 }
