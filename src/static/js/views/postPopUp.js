@@ -31,8 +31,8 @@ const modal = {
         </div>
         <button class="btn" id="btnPost">Publicar</button>`,
     view(post,user){
-        return `<div>
-            <div> 
+        return `<div class="mid">
+            <div class="mid"> 
                 <img class="profile-small" src="${user.profilepic}">
                 <div>
                     <div>
@@ -51,7 +51,7 @@ const modal = {
                 <p>${post.type}</p>
             </div>
         </div>
-        <div>
+        <div class="mid">
             <div>
                 <h3>Descripción del reporte</h3>
                 <p>${post.description}</p>
