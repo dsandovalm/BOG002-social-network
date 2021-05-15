@@ -18,3 +18,24 @@ footer img{padding: 0.5px}
     height: 530px; /*Solo sirve en mobile, hacer responsive*/
     padding: 10px; 
 }
+
+
+/* - - - Pop Up - - - */
+
+#modal{
+  width:100%;
+  height:100%;
+  position: absolute;
+}
+.report {
+    max-width:500px;
+    width: 80%;
+    padding: 20px;
+    border-radius: 20px; 
+  vertical-align: middle;
+}
+
+.mid {
+    display: flex;
+  flex-wrap: wrap;
+}
