@@ -1,4 +1,5 @@
 export const renderProfile = () => {
+  const user = firebase.auth().currentUser;
   const html = `
   <section id = "profile">
     
@@ -10,14 +11,15 @@ export const renderProfile = () => {
       </header>
 
       <div id="container-data">
-          <img class="user-image" class="user-image" src="">
-          <h2 id="user-name"></h2>
+          <img class="user-image" class="user-image" src="${user.photoURL}">
+          <h3 id="user-name">${user.displayName}</h3>
           <span id="calification"></span>
           <p class = "line-profile"></p>
-          <p id="user-description"></p>
-          <textarea></textarea>
-          <p id="user-transport"</p>
-          <textarea></textarea>
+          <h3 id="user-description">Descripción</h3>
+          <button id="btn-edit" class="btn-edit"><img class="icon-edit" src="static/images/icons/icon-edit.png" alt=""></button>
+          <p>Agrega una descripción...</p>
+          <h2 id="user-transport">Medio de transporte</h2>
+          <p>Agrega un medio de transporte...</p>
       </div>
 
       <div id="user-post">
@@ -38,8 +40,7 @@ export const renderProfile = () => {
   div.innerHTML = html;
 
   return div;
-}
+};
 
-export function afterRenderProfile(){
-
+export function afterRenderProfile() {
 }
