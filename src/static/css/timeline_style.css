@@ -34,8 +34,19 @@ footer img{padding: 0.5px}
     border-radius: 20px; 
   vertical-align: middle;
 }
+.flex{
+  display: flex;
+}
 
 .mid {
-    display: flex;
-  flex-wrap: wrap;
+  width:50%;
+}
+
+.mid div {
+  flex-grow:1;
+}
+
+.reactions{ 
+  display:flex;
+  justify-content: space-around;
 }
