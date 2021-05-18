@@ -16,7 +16,7 @@ body {
 }
 
 /*Selector de clases que comiencen con 'btn', configuración de botones en toda la app*/
-[id ^= btn] {
+[id ^= "btn"] {
     padding: 12px;
     margin: 10px;
     cursor: pointer;

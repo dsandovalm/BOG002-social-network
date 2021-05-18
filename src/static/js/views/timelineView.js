@@ -9,8 +9,8 @@ export const renderTimeline = () => {
         <input type="text" maxlength="100" autocomplete="off">
         <img id=icon-lupa src="static/images/icons/icon-lupa.png">
       </header>
-      <input type = "text" id = "txt-lat" placeholder = "latitud"></input>
-      <input type = "text" id = "txt-lng" placeholder = "longitud"></input>
+      <input id = "txt-lat" placeholder = "latitud"></input>
+      <input id = "txt-lng" placeholder = "longitud"></input>
       <button id = "addCoords">Agregar</button>
       <div id="map"></div>
 

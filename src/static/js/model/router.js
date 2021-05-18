@@ -3,6 +3,8 @@ import { renderLogin, afterRenderLogin } from '../views/loginView.js';
 import { renderSettings, afterRenderSettings } from '../views/settingsView.js';
 import { renderRecover, afterRenderRecover } from '../views/recoverView.js';
 import { renderProfile, afterRenderProfile } from '../views/profileView.js';
+import { renderRegister } from '../views/registerView.js';
+
 
 const container = document.getElementById('root');
 
@@ -13,11 +15,14 @@ export const init = () => {
 
   if (user) {
     // User is signed in.
-    //console.log('Has iniciado sesion');
+    console.log('Has iniciado sesion');
     switch (url) {
       case '#/timeline':
         container.appendChild(renderTimeline());
         afterRenderTimeLine();
+        break;
+      case '#/register':
+        container.appendChild(renderRegister());
         break;
       case '#/settings':
         container.appendChild(renderSettings());
@@ -33,7 +38,7 @@ export const init = () => {
     }
   } else {
     // No user is signed in.
-    //console.log('No has iniciado sesion');
+    console.log('No has iniciado sesion');
     switch (url) {
       case '#/login':
         container.appendChild(renderLogin());

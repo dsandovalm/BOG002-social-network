@@ -55,7 +55,7 @@ export const signUpEmail = (email, password) => {
   const promesa = firebase
     .auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
-      window.location.assign('#/timeline');
+      window.location.assign('#/register');
       return userCredential;
     })
     .catch((error) => {
