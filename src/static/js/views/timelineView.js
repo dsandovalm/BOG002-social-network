@@ -83,4 +83,5 @@ export function afterRenderTimeline( /* visiblePosts = un arreglo de posts*/ ) {
       )
     ) 
   }); */
+
 }
