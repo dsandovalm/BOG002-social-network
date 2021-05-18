@@ -50,7 +50,7 @@ export function createPost( ubicationReport, typeReport, photoReport, descriptio
     return post
 }
 
-export function likePost (postId,likeType){
+export function reactPost (postId,likeType){
     // Toma el post y le añade 1 like
     let promise;
     switch(likeType){
@@ -58,20 +58,29 @@ export function likePost (postId,likeType){
             promise = firebase.firestore().collection("Posts").doc(postId).update({
                 stats: {
                     like: firebase.firestore.FieldValue.increment(1),
+                    dislike: firebase.firestore.FieldValue.increment(0),
+                    meh: firebase.firestore.FieldValue.increment(0),
+                    views: firebase.firestore.FieldValue.increment(0),
                 }
             })
             break;
         case 'dislike':
             promise = firebase.firestore().collection("Posts").doc(postId).update({
                 stats: {
+                    like: firebase.firestore.FieldValue.increment(0),
                     dislike: firebase.firestore.FieldValue.increment(1),
+                    meh: firebase.firestore.FieldValue.increment(0),
+                    views: firebase.firestore.FieldValue.increment(0),
                 }
             })
             break;
         case 'meh':
             promise = firebase.firestore().collection("Posts").doc(postId).update({
                 stats: {
+                    like: firebase.firestore.FieldValue.increment(0),
+                    dislike: firebase.firestore.FieldValue.increment(0),
                     meh: firebase.firestore.FieldValue.increment(1),
+                    views: firebase.firestore.FieldValue.increment(0),
                 }
             })
             break;
@@ -81,6 +90,5 @@ export function likePost (postId,likeType){
     })
     .catch((error) => {
         console.error("Error writing document: ", error);
-    });
-        
+    });       
 }
