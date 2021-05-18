@@ -1,6 +1,4 @@
-import {
-  signUpGoogle, logInEmail, signUpEmail,
-} from '../model/login.js';
+import { signUpGoogle, logInEmail, signUpEmail } from '../model/login.js';
 
 export const renderLogin = () => {
   const html = `

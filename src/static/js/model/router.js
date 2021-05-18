@@ -12,8 +12,7 @@ export const init = () => {
   container.innerHTML = '';
 
   if (user) {
-    // User is signed in.
-    //console.log('Has iniciado sesion');
+    // console.log('Has iniciado sesion');
     switch (url) {
       case '#/timeline':
         container.appendChild(renderTimeline());
@@ -31,8 +30,7 @@ export const init = () => {
         break;
     }
   } else {
-    // No user is signed in.
-    //console.log('No has iniciado sesion');
+    // console.log('No has iniciado sesion');
     switch (url) {
       case '#/login':
         container.appendChild(renderLogin());
