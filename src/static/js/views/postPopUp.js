@@ -31,8 +31,8 @@ const modal = {
         </div>
         <button class="btn" id="btnPost">Publicar</button>`,
     view(post,user){
-        return `<div class="mid">
-            <div class="mid"> 
+        return `<div>
+            <div> 
                 <img class="profile-small" src="${user.profilepic}">
                 <div>
                     <div>
@@ -51,7 +51,7 @@ const modal = {
                 <p>${post.type}</p>
             </div>
         </div>
-        <div class="mid">
+        <div>
             <div>
                 <h3>Descripción del reporte</h3>
                 <p>${post.description}</p>
@@ -135,3 +135,4 @@ export const modalView = {
         ]);
     }
 }
+
