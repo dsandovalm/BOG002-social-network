@@ -1,4 +1,3 @@
-import { saveCoords } from "../model/coords.js"
 export const renderTimeline = () => {
   const html = `
       <section id="muro">
@@ -29,11 +28,4 @@ export const renderTimeline = () => {
 
 export function afterRenderTimeLine() {
 
- const addBtn = document.querySelector('#addCoords');
- addBtn.addEventListener('click', (e) =>{
-  let u = {};
-  u.lat = document.querySelector('#txt-lat').value;
-  u.lng = document.querySelector('#txt-lng').value;
-   saveCoords()
- })
 }

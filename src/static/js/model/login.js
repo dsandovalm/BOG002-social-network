@@ -1,4 +1,5 @@
-import { auth } from './firebase_config.js';
+import { auth } from '../controler/firebase_config.js';
+import { registerData } from './register.js';
 
 // - - - GOOGLE Y FACEBOOK
 
@@ -8,6 +9,7 @@ export const signUpGoogle = () => {
   const promesa = auth
     .signInWithPopup(provider)
     .then((result) => {
+      registerData(result);
       window.location.assign('#/timeline');
       const credential = result.credential;
     }).catch((error) => {
@@ -48,6 +50,7 @@ export const logInEmail = (email, password) => {
 export const signUpEmail = (email, password) => {
   const promesa = auth.createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
+      registerData(userCredential);
       window.location.assign('#/register');
       return userCredential;
     })

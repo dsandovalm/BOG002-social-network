@@ -1,3 +1,5 @@
+import { updateData } from '../model/register.js'
+
 export const renderRegister = () => {
     const html = `
     <section id ="register">
@@ -21,11 +23,19 @@ export const renderRegister = () => {
     `;
     const div = document.createElement('div');
     div.innerHTML = html;
-  
-    return div;
-} 
 
-export function afterRenderRegister(){
-    
+    return div;
+}
+
+export function afterRenderRegister() {
+    const registerBtn = document.querySelector('#btn-register');
+    registerBtn.addEventListener('click', () => {
+        const userName = document.querySelector('#input-name').value;
+        const userDescription = document.querySelector('#input-description').value;
+        const userMethods = document.querySelector('#input-methods').value;
+        const userPhoto = document.querySelector('#input-pic').value;
+        updateData(userName, userDescription, userMethods, userPhoto);
+    })
+
 }
 

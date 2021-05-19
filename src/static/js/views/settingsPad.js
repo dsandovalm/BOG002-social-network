@@ -1,3 +1,5 @@
+import {updateName, updatePhoto, updateEmail, updatePassword} from '../model/settings.js';
+
 const settingsPad = {
   picture: `
     <h2>Selecciona una foto para tu perfil</h2>
@@ -5,7 +7,7 @@ const settingsPad = {
       <img src="https://raw.githubusercontent.com/dsandovalm/BOG002-social-network/main/src/images/icons/icon-uploadImg.png" alt="">
       <p>Selecciona del ordenador</p>
     </div>
-    <button class="btn-upload">Subir</button> 
+    <button id = "btn-update-photo" class="btn-upload">Subir</button> 
   `,
   name: `
         <h2>Escribe tu nombre</h2>
@@ -20,7 +22,7 @@ const settingsPad = {
                 <input type="text" id="password">
             </p>
         </div>
-        <button class="btn-upload">Cambiar Nombre</button>
+        <button id = "btn-update-photo" class="btn-upload">Cambiar Nombre</button>
   `,
   email: `
         <h2>Cambiar correo</h2>
@@ -35,7 +37,7 @@ const settingsPad = {
             <input type="text" id="password">
         </p>
         </div>
-        <button class="btn-upload">Cambiar Correo</button>
+        <button id = "btn-update-email" class="btn-upload">Cambiar Correo</button>
   `,
   password: `
         <h2>Cambiar contraseña</h2>
@@ -61,14 +63,30 @@ const settingsPad = {
 export const changeSettings = {
   picture() {
     document.getElementById('settPad').innerHTML = settingsPad.picture;
+    const updatePhotoBtn = document.querySelector('#btn-update-photo')
+    updatePhotoBtn.addEventListener('click', (e) => {
+      updatePhoto();
+    })
   },
   name() {
     document.getElementById('settPad').innerHTML = settingsPad.name;
+    const updateNameBtn = document.querySelector('#btn-update-name')
+    updateNameBtn.addEventListener('click', (e) => {
+      updateName();
+    })
   },
   email() {
     document.getElementById('settPad').innerHTML = settingsPad.email;
+    const updateEmailBtn = document.querySelector('#btn-update-email')
+    updateEmailBtn.addEventListener('click', (e) => {
+      updateEmail();
+    })
   },
   password() {
     document.getElementById('settPad').innerHTML = settingsPad.password;
+    const updatePasswordBtn = document.querySelector('#btn-update-password')
+    updatePasswordBtn.addEventListener('click', (e) => {
+      updatePassword();
+    })
   },
 };

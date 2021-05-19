@@ -39,14 +39,14 @@ export const renderSettings = () => {
 };
 
 export function afterRenderSettings() {
+  
+  /*Cerrar sesión*/
   const btnSignOut = document.getElementById('signOut');
   btnSignOut.addEventListener('click', (e) => {
     e.preventDefault();
     signOut();
   });
-
-  changeSettings.picture();
-
+  
   const btnSettPic = document.getElementById('settPic');
   const btnSettName = document.getElementById('settName');
   const btnSettMail = document.getElementById('settMail');

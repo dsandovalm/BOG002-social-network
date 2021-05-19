@@ -1,0 +1,36 @@
+/* Sección del perfil */
+
+#container-data {
+    position: flex;
+    margin: auto;
+    background: #FCDB4B;
+    border-radius: 22px;
+}
+
+.user-image {
+    text-align: left;
+    width: 40%;
+    height: 40%;
+    padding-top: 15px;
+    padding-left: 15px;
+    border-radius: 50%;
+}
+
+#user-name {
+    font-family: bold;
+    text-align: center;
+}
+
+.line-profile {
+    font-family: bold;
+    text-align: center;
+}
+
+#user-description {
+    text-align: left;
+    padding-left: 15px;
+}
+
+.btn-edit {
+    background-color: transparent;
+}
