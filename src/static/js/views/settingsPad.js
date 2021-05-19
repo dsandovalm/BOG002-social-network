@@ -5,7 +5,7 @@ const settingsPad = {
     <h2>Selecciona una foto para tu perfil</h2>
     <div class="input-image">
       <img src="https://raw.githubusercontent.com/dsandovalm/BOG002-social-network/main/src/images/icons/icon-uploadImg.png" alt="">
-      <p>Selecciona del ordenador</p>
+      <input type= ima>Selecciona del ordenador</input>
     </div>
     <button id = "btn-update-photo" class="btn-upload">Subir</button> 
   `,
@@ -63,8 +63,9 @@ const settingsPad = {
 export const changeSettings = {
   picture() {
     document.getElementById('settPad').innerHTML = settingsPad.picture;
-    const updatePhotoBtn = document.querySelector('#btn-update-photo')
+    const updatePhotoBtn = document.querySelector('#btn-update-photo') 
     updatePhotoBtn.addEventListener('click', (e) => {
+      const name = document.querySelector()
       updatePhoto();
     })
   },
