@@ -58,8 +58,40 @@ export function afterRenderSettings() {
   btnSettPass.addEventListener('click', changeSettings.password);
 
   const btnHome = document.getElementById('icon-home');
+  const btnHome = document.getElementById('icon-home');
+  const btnHome = document.getElementById('icon-home');
+  const btnHome = document.getElementById('icon-home');
+  const btnHome = document.getElementById('icon-home');
+  const btnHome = document.getElementById('icon-home');
   btnHome.addEventListener('click', () => {
-    window.location.assign('#/timeline')
+  btnHome.addEventListener('click', () => {
+  btnHome.addEventListener('click', () => {
+  btnHome.addEventListener('click', () => {
+  btnHome.addEventListener('click', () => {
+  btnHome.addEventListener('click', () => {
+    window.location.assign('#/timeline');
+    window.location.assign('#/timeline');
+    window.location.assign('#/timeline');
+    window.location.assign('#/timeline');
+    window.location.assign('#/timeline');
+    window.location.assign('#/timeline');
   });
- 
+
+  /* const btnChangePic = document.getElementById('ChangePic');
+  /* const btnChangePic = document.getElementById('ChangePic');
+  /* const btnChangePic = document.getElementById('ChangePic');
+  /* const btnChangePic = document.getElementById('ChangePic');
+  /* const btnChangePic = document.getElementById('ChangePic');
+  /* const btnChangePic = document.getElementById('ChangePic');
+  const btnChangeName = document.getElementById('ChangeName');
+  const btnChangeMail = document.getElementById('ChangeMail');
+  const btnChangePass = document.getElementById('ChangePassword');
+
+  btnChangePic.addEventListener('click', updatePhoto);
+  */
+
+  // Cambiar foto
+  // Cambiar nombre
+  // Cambiar correo
+  // Cambiar contraseña
 }
