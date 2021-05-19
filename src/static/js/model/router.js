@@ -1,4 +1,4 @@
-import { renderTimeline, afterRenderTimeLine } from '../views/timelineView.js';
+import { renderTimeline, afterRenderTimeline } from 'src/static/js/views/timelineView.js';
 import { renderLogin, afterRenderLogin } from '../views/loginView.js';
 import { renderSettings, afterRenderSettings } from '../views/settingsView.js';
 import { renderRecover, afterRenderRecover } from '../views/recoverView.js';
@@ -18,7 +18,7 @@ export const init = () => {
     switch (url) {
       case '#/timeline':
         container.appendChild(renderTimeline());
-        afterRenderTimeLine();
+        afterRenderTimeline();
         break;
       case '#/register':
         container.appendChild(renderRegister());

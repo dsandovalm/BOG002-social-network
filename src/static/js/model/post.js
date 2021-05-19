@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-export function createPost(ubicationReport, photoReport, descriptionReport) {
-  const post = {
-    date: new Date(),
-    ubication: ubicationReport,
-    photo: photoReport,
-    description: descriptionReport,
-    stats: {
-      like: 0,
-      meh: 0,
-      dislike: 0,
-      views: 0,
-    },
-  };
-
-  firebase
-    .firestore()
-    .collection('Posts').add({ post })
-    .then((docRef) => {
-      console.log('Document written with ID: ', docRef.id);
-=======
 export function createPost( ubicationReport, typeReport, photoReport, descriptionReport ) {
     
     // - - - - - - - - - Crea un objeto post
@@ -64,7 +43,6 @@ export function createPost( ubicationReport, typeReport, photoReport, descriptio
         .catch((error) => {
             console.error("Error writing document: ", error);
         });
->>>>>>> e73e816800f33b113300687fd168ba36f51260e1
     })
     .catch((error) => {
       console.error('Error adding document: ', error);
