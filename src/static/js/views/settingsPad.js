@@ -7,7 +7,11 @@ const settingsPad = {
       <img src="https://raw.githubusercontent.com/dsandovalm/BOG002-social-network/main/src/images/icons/icon-uploadImg.png" alt="">
       <input type= ima>Selecciona del ordenador</input>
     </div>
+<<<<<<< HEAD
     <button id = "btn-update-photo" class="btn-upload">Subir</button> 
+=======
+    <button id="btnChangePic" class="btn-upload">Subir</button> 
+>>>>>>> 126f44034bddf12179f20ec8fb926bd54ef5fd73
   `,
   name: `
         <h2>Escribe tu nombre</h2>
@@ -22,7 +26,11 @@ const settingsPad = {
                 <input type="text" id="password">
             </p>
         </div>
+<<<<<<< HEAD
         <button id = "btn-update-photo" class="btn-upload">Cambiar Nombre</button>
+=======
+        <button id="btnChangeName" class="btn-upload">Cambiar Nombre</button>
+>>>>>>> 126f44034bddf12179f20ec8fb926bd54ef5fd73
   `,
   email: `
         <h2>Cambiar correo</h2>
@@ -37,7 +45,11 @@ const settingsPad = {
             <input type="text" id="password">
         </p>
         </div>
+<<<<<<< HEAD
         <button id = "btn-update-email" class="btn-upload">Cambiar Correo</button>
+=======
+        <button id="btnChangeMail" class="btn-upload">Cambiar Correo</button>
+>>>>>>> 126f44034bddf12179f20ec8fb926bd54ef5fd73
   `,
   password: `
         <h2>Cambiar contraseña</h2>
@@ -56,7 +68,7 @@ const settingsPad = {
                 <input type="text" id="repeatPassword">
             </p>
         </div>
-        <button class="btn-upload">Cambiar Contraseña</button>
+        <button id="btnChangePass" class="btn-upload">Cambiar Contraseña</button>
   `,
 };
 

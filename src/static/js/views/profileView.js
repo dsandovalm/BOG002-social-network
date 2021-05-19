@@ -46,3 +46,4 @@ export const renderProfile = (user) => {
 
 export function afterRenderProfile() {
 }
+
