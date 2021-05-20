@@ -1,10 +1,9 @@
-import { renderTimeline, afterRenderTimeLine } from '../views/timelineView.js';
+import { renderTimeline, afterRenderTimeline } from '../views/timelineView.js';
 import { renderLogin, afterRenderLogin } from '../views/loginView.js';
 import { renderSettings, afterRenderSettings } from '../views/settingsView.js';
 import { renderRecover, afterRenderRecover } from '../views/recoverView.js';
 import { renderProfile, afterRenderProfile } from '../views/profileView.js';
 import { renderRegister, afterRenderRegister } from '../views/registerView.js';
-import { getUser } from '../model/profile.js';
 
 
 const container = document.getElementById('root');
@@ -12,6 +11,7 @@ const container = document.getElementById('root');
 export const init = () => {
   const url = window.location.hash;
   const user = firebase.auth().currentUser;
+  console.log(user)
   container.innerHTML = '';
 
   if (user) {
@@ -19,7 +19,7 @@ export const init = () => {
     switch (url) {
       case '#/timeline':
         container.appendChild(renderTimeline());
-        afterRenderTimeLine();
+        afterRenderTimeline();
         break;
       case '#/register':
         container.appendChild(renderRegister());
@@ -30,14 +30,8 @@ export const init = () => {
         afterRenderSettings();
         break;
       case '#/profile':
-        getUser().then((snapshot) => {
-          snapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            let user = doc.data();
-            container.appendChild(renderProfile(user));
-            afterRenderProfile();
-          });
-        })
+        container.appendChild(renderProfile(user));
+        afterRenderProfile();
         break;
       default:
         window.location.assign('#/timeline');
@@ -61,3 +55,10 @@ export const init = () => {
   }
 };
 
+/* firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    window.location.assign('#/timeline');
+  } else {
+    // No user is signed in.
+  }
+}); */

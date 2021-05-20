@@ -2,7 +2,7 @@ import { db } from '../controler/firebase_config.js';
 
 /*Colección de datos para todos los usarios*/
 export function registerData(profile) {
-  let user = {
+  const user = {
     id: profile.user.uid,
     mail: profile.user.email,
     name: profile.user.displayName,
@@ -10,7 +10,7 @@ export function registerData(profile) {
     methods: '',
     photo: profile.user.photoURL,
   }
-
+//crear el condicional para eliminar la duplicacion en la colección
   db.collection('Users').add( user )
     .then((docRef) => {
       console.log('Document written with ID: ', docRef.id);
@@ -48,5 +48,4 @@ export const updateData = (userName, userDescription, userMethods, userPhoto) =>
   .catch((error) => {
       console.log("Error getting documents: ", error);
   });
-  
-}
+};

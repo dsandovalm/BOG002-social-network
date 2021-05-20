@@ -1,15 +1,15 @@
 import { auth } from '../controler/firebase_config.js';
 import { registerData } from './register.js';
 
-// - - - GOOGLE Y FACEBOOK
-
 // Crear cuenta con Google
 export const signUpGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   const promesa = auth
     .signInWithPopup(provider)
     .then((result) => {
-      registerData(result);
+      if(result.additionalUserInfo.isNewUser){
+        registerData(result);
+      }
       window.location.assign('#/timeline');
       const credential = result.credential;
     }).catch((error) => {

@@ -13,8 +13,8 @@ export const renderProfile = (user) => {
       </header>
 
       <div id="container-data">
-          <img class="user-image" class="user-image" src="${user.photo}">
-          <h3 id="user-name">${user.name}</h3>
+          <img class="user-image" class="user-image" src="${user.photoURL}">
+          <h3 id="user-name">${user.displayName}</h3>
           <span id="calification"></span>
           <h4 id="user-description">Descripción</h4>
           <button id="btn-edit" class="btn-edit"><img class="btn-edit" src="static/images/icons/icon-edit.png" alt=""></button>
