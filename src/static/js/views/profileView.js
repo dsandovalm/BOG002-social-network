@@ -13,14 +13,27 @@ export const renderProfile = (user) => {
       </header>
 
       <div id="container-data">
-          <img class="user-image" class="user-image" src="${user.photoURL}">
-          <h3 id="user-name">${user.displayName}</h3>
-          <span id="calification"></span>
-          <h4 id="user-description">Descripción</h4>
+          <img class="user-image" class="user-image" src="${user.photo}">
+          <h3 id="user-name">${user.name}</h3>
+          <form>
+            <p class="clasificacion">
+              <input id="radio1" type="radio" name="estrellas" value="5">
+                <label for="radio1">★</label>
+                <input id="radio2" type="radio" name="estrellas" value="4">
+                <label for="radio2">★</label>
+                <input id="radio3" type="radio" name="estrellas" value="3">
+                <label for="radio3">★</label>
+                <input id="radio4" type="radio" name="estrellas" value="2">
+                <label for="radio4">★</label>
+                <input id="radio5" type="radio" name="estrellas" value="1">
+                <label for="radio5">★</label>
+            </p>
+          </form>
+          <h3 id="user-description">Descripción</h3>
           <button id="btn-edit" class="btn-edit"><img class="btn-edit" src="static/images/icons/icon-edit.png" alt=""></button>
-          <p>${description}</p>
+          <p class="description">${description}</p>
           <h3 id="user-transport">Medio de transporte</h3>
-          <p>${methods}</p>
+          <p class="transport">${methods}</p>
       </div>
 
       <div id="user-post">

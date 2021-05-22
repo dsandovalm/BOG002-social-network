@@ -29,7 +29,6 @@ export const updateData = (userName, userDescription, userMethods, userPhoto) =>
   .then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-          
           return db.collection('Users').doc(doc.id).update({
             name: userName,
             description: userDescription,
@@ -38,6 +37,7 @@ export const updateData = (userName, userDescription, userMethods, userPhoto) =>
           })
             .then(() => {
               console.log("Document successfully updated!");
+              window.location.assign('#/timeline');
             })
             .catch((error) => {
               // The document probably doesn't exist.

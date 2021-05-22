@@ -1,4 +1,4 @@
-import { signOut } from '../model/settings.js';
+import { signOut, deleteUser } from '../model/settings.js';
 import { changeSettings } from './settingsPad.js';
 
 export const renderSettings = () => {
@@ -23,8 +23,8 @@ export const renderSettings = () => {
                     <p id="settPassword">Cambiar contraseña</p>
                     </div>
                     <div>
-                    <a href="#" id="signOut">Cerrar sesión</a>
-                    <p>Desactivar cuenta</p>
+                    <a id="signOut">Cerrar sesión</a><br>
+                    <a id="deleteUser"> Desactivar cuenta</a>
                     </div>
                 </div>
                 <div class="rigth pad" id="settPad">
@@ -46,6 +46,15 @@ export function afterRenderSettings() {
     e.preventDefault();
     signOut();
   });
+
+  /*Borrar usurio*/
+  const btnDeleteUser = document.getElementById('deleteUser')
+  btnDeleteUser.addEventListener('click',(e) => {
+    e.preventDefault();
+    deleteUser();
+  });
+
+  changeSettings.picture();
   
   const btnSettPic = document.getElementById('settPic');
   const btnSettName = document.getElementById('settName');

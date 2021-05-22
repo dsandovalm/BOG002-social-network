@@ -4,6 +4,7 @@ import { renderSettings, afterRenderSettings } from '../views/settingsView.js';
 import { renderRecover, afterRenderRecover } from '../views/recoverView.js';
 import { renderProfile, afterRenderProfile } from '../views/profileView.js';
 import { renderRegister, afterRenderRegister } from '../views/registerView.js';
+import { getUser } from '../model/profile.js';
 
 
 const container = document.getElementById('root');
@@ -11,7 +12,6 @@ const container = document.getElementById('root');
 export const init = () => {
   const url = window.location.hash;
   const user = firebase.auth().currentUser;
-  console.log(user)
   container.innerHTML = '';
 
   if (user) {
@@ -30,8 +30,15 @@ export const init = () => {
         afterRenderSettings();
         break;
       case '#/profile':
-        container.appendChild(renderProfile(user));
-        afterRenderProfile();
+        getUser().then((snapshot) => {
+          snapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            let user = doc.data();
+            container.appendChild(renderProfile(user));
+            afterRenderProfile();
+          });
+        })
+
         break;
       default:
         window.location.assign('#/timeline');
