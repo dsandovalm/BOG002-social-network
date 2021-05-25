@@ -1,10 +1,8 @@
 /* Sección Settings*/
 
 .header {
-    display: flex;
-    height:75px;
+    margin: 2%;
     justify-content: space-between;
-    align-items: center;
 }
 
 .content {

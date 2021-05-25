@@ -15,7 +15,7 @@ export const renderLogin = () => {
             <form id="signin-form" class = "container-signin">
                 <div>
                     <p>¿Tienes una cuenta?</p>
-                    <a id = "link-login" class = "link">Iniciar sesión</a>
+                    <a id ="link-login" class = "link">Iniciar sesión</a>
                 </div>
                 <div id = "register-signin">
                     <button id="btn-google" class="btn-google"><img class="icon-gmail" src="static/images/icons/icon-google.png" alt="Gmail">Iniciar sesión con Google</button>

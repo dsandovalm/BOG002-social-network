@@ -7,8 +7,6 @@ export const renderSettings = () => {
             <div class="header">
                 <div>
                     <h1>WALKTER</h1>
-                </div>
-                <div id="home">
                     <img class="icon-home" id="icon-home" src="static/images/icons/icon-home.png">
                 </div>
             </div>
