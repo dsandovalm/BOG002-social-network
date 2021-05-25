@@ -2,7 +2,7 @@
 
 .header {
     display: flex;
-    height:75px;
+    height:90px;
     justify-content: space-between;
     align-items: center;
 }
@@ -16,7 +16,7 @@
 
 .pad {
     border-radius: 20px;
-    padding: 20px;
+    padding: 30px;
     display: flex;
     flex-flow: column nowrap;
     justify-content:space-between;
@@ -32,16 +32,28 @@
     width: 72%;
 }
 
-.input-image {
-    padding: 5px;
+.settings-input{
+    background-color: #D9D5D5;
+    border: none;
+    float: right;
+}
+
+.input-container {
+    display: flex;
+    padding: 40px;
     width: 100%;
     background-color: #F0EEEE;
-    text-align: center;
     flex-grow: 1;
-    display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
-    align-items: center;
+    border-radius: 12px;
+}
+
+.note-container{
+    padding: 10px;
+    background-color: #D9D5D5;
+    justify-content: space-around;
+    border-radius: 12px;
 }
 
 .btn-upload {
@@ -54,4 +66,32 @@
     border: none;
     background-color: var(--morado);
     color: #FFF;
+}
+
+#input-container-photo{
+    padding: 20px;
+    width: 100%;
+    background-color: #F0EEEE;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 12px;
+}
+
+#img-upload{
+    height: 150px;
+    width: 150px;
+}
+
+#input-photo{
+    padding: 12px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: transparent; 
+    font-size: 15px;
+    background-color: #D9D5D5;
 }

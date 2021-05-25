@@ -84,6 +84,29 @@ export const updatePassword = (newPassword) => {
   });
 }
 
+/*Configuración de descripción*/
+export const updateDescription = (description, methods) => {
+  //Configuración descripción en la colección 
+  getUser()
+  .then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      return db.collection('Users').doc(doc.id).update({description: description, methods: methods})
+      .then(() => {
+        console.log("Document successfully updated!");
+      })
+      .catch((error) => {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+      });
+    });
+  })
+  .catch((error) => {
+    console.log("Error getting documents: ", error);
+  });
+}
+
+
 /*Cerrar sesión*/
 export const signOut = () => {
   const promesa = firebase

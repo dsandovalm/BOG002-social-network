@@ -1,65 +1,88 @@
-import {updateName, updatePhoto, updateEmail, updatePassword} from '../model/settings.js';
+import { updateName, updatePhoto, updateEmail, updatePassword, updateDescription } from '../model/settings.js';
 
 const settingsPad = {
   picture: `
-    <h2>Selecciona una foto para tu perfil</h2>
-    <div class="input-image">
-      <img src="static/images/icons/icon-uploadingImg.png" alt="">
-      <input type="file" id = "photo" >Selecciona del ordenador</input>
-    </div>
-    <button id = "btn-update-photo" class="btn-upload">Subir</button> 
+          <h2>Selecciona una foto para tu perfil</h2>
+          <div id = "input-container-photo">
+            <img src="static/images/icons/icon-uploadImg.png" id = "img-upload">
+            <input type="file" id = "input-photo"></input>
+          </div>
+          <button id = "btn-update-photo" class="btn-upload">Guardar cambios</button> 
   `,
   name: `
-        <h2>Escribe tu nombre</h2>
-        <div>
-            <p>Recuerda que si cambias tu nombre no lo podrás modificar en los proximos 60 dias</p>
+        <h2>Edita tu nombre</h2>
+        <div class="input-container">
             <p>
-                <label for="name">Nuevo nombre </label>
-                <input type="text" id="name">
+                <label for="name">Nombre:</label>
+                <input id="name" class = "settings-input">
             </p>
             <p>
-                <label for="password">Escribe tu contraseña para validar </label>
-                <input type="text" id="password">
+                <label for="password">Confirma tu contraseña:</label>
+                <input id="password" class = "settings-input">
             </p>
+            <div class = "note-container">
+            <p>Nota: Recuerda que si cambias tu nombre no lo podrás modificar en los proximos 60 dias</p>
+            </div>
         </div>
-        <button id = "btn-update-name" class="btn-upload">Cambiar Nombre</button>
+        <button id = "btn-update-name" class="btn-upload">Guardar cambios</button>
   `,
   email: `
-        <h2>Cambiar correo</h2>
-        <div>
-        <p>Si cambias tu correo asociado, tendrás que hacer el login con este y la información de recuperación de contraseña llegará al nuevo</p>
-        <p>
-            <label for="mail">Nuevo correo </label>
-            <input type="text" id="mail">
-        </p>
-        <p>
-            <label for="password">Escribe tu contraseña para validar </label>
-            <input type="text" id="password">
-        </p>
+        <h2>Edita tu correo</h2>
+        <div class="input-container">
+          <p>
+              <label for="mail">Correo:</label>
+              <input id="mail" class = "settings-input">
+          </p>
+          <p>
+              <label for="password">Confirma tu contraseña:</label>
+              <input id="password" class = "settings-input">
+          </p>
+          <div class = "note-container">
+          <p>Nota: Si cambias tu correo asociado, tendrás que hacer el login con este y la información de recuperación de contraseña llegará al nuevo</p>
+          </div>
         </div>
-        <button id = "btn-update-email" class="btn-upload">Cambiar Correo</button>
+        <button id = "btn-update-email" class="btn-upload">Guardar cambios</button>
   `,
   password: `
-        <h2>Cambiar contraseña</h2>
-        <div>
-            <p>Por seguridad se recomienda cambiar la contraseña al menos dos veces al año</p>
+        <h2>Edita tu contraseña</h2>
+        <div class="input-container">
             <p>
-                <label for="password">Contraseña actual</label>
-                <input type="text" id="password">
+                <label for="password> Contraseña actual: </label>
+                <input id="password" class = "settings-input">
             </p>
             <p>
-                <label for="newPassword">Nueva contraseña </label>
-                <input type="text" id="newPassword">
+                <label for="newPassword>Nueva contraseña:</label>
+                <input id="newPassword" class = "settings-input">
             </p>
+            <div class = "note-container">
+            <p>Nota: Por seguridad se recomienda cambiar la contraseña al menos dos veces al año</p>
+            </div>
         </div>
-        <button id="btn-update-password" class="btn-upload">Cambiar Contraseña</button>
+        <button id="btn-update-password" class="btn-upload">Guardar cambios</button>
+  `,
+  description: `
+        <h2>Edita tu biografía</h2>
+        <div class="input-container">
+            <p>
+                <label for="description">Descripción:</label>
+                <input id="newDescription" class = "settings-input">
+            </p>
+            <p>
+                <label for="methods">Métodos de transporte:</label>
+                <input id="newMethods" class = "settings-input">
+            </p>
+            <div class = "note-container">
+            <p>Nota: Por seguridad se recomienda cambiar la contraseña al menos dos veces al año</p>
+            </div>
+        </div>
+        <button id="btn-update-description" class="btn-upload">Guardar cambios</button>
   `,
 };
 
 export const changeSettings = {
   picture() {
     document.getElementById('settPad').innerHTML = settingsPad.picture;
-    const updatePhotoBtn = document.querySelector('#btn-update-photo') 
+    const updatePhotoBtn = document.querySelector('#btn-update-photo')
     updatePhotoBtn.addEventListener('click', (e) => {
       const photo = document.querySelector('#photo').value
       updatePhoto(photo);
@@ -77,7 +100,7 @@ export const changeSettings = {
     document.getElementById('settPad').innerHTML = settingsPad.email;
     const updateEmailBtn = document.querySelector('#btn-update-email')
     updateEmailBtn.addEventListener('click', (e) => {
-      const newMail= document.querySelector('#mail').value
+      const newMail = document.querySelector('#mail').value
       updateEmail(newMail);
     })
   },
@@ -87,6 +110,15 @@ export const changeSettings = {
     updatePasswordBtn.addEventListener('click', (e) => {
       const newPassword = document.querySelector('#newPassword').value
       updatePassword(newPassword);
+    })
+  },
+  description() {
+    document.getElementById('settPad').innerHTML = settingsPad.description;
+    const updateDescriptionBtn = document.querySelector('#btn-update-description')
+    updateDescriptionBtn.addEventListener('click', (e) => {
+      const newDescription = document.querySelector('#newDescription').value
+      const newMethods = document.querySelector('#newMethods').value
+      updateDescription(newDescription, newMethods);
     })
   },
 };

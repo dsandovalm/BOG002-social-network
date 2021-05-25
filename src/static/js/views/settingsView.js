@@ -21,6 +21,7 @@ export const renderSettings = () => {
                     <p id="settName">Cambiar nombre</p>
                     <p id="settMail">Cambiar correo</p>
                     <p id="settPassword">Cambiar contraseña</p>
+                    <p id="settDescription">Editar biografía</p>
                     </div>
                     <div>
                     <a id="signOut">Cerrar sesión</a><br>
@@ -60,26 +61,16 @@ export function afterRenderSettings() {
   const btnSettName = document.getElementById('settName');
   const btnSettMail = document.getElementById('settMail');
   const btnSettPass = document.getElementById('settPassword');
+  const btnSettDescr = document.getElementById('settDescription');
 
   btnSettPic.addEventListener('click', changeSettings.picture);
   btnSettName.addEventListener('click', changeSettings.name);
   btnSettMail.addEventListener('click', changeSettings.email);
   btnSettPass.addEventListener('click', changeSettings.password);
+  btnSettDescr.addEventListener('click', changeSettings.description);
 
   const btnHome = document.getElementById('icon-home');
   btnHome.addEventListener('click', () => {
     window.location.assign('#/timeline');
   });
-
-  /* const btnChangePic = document.getElementById('ChangePic');
-  const btnChangeName = document.getElementById('ChangeName');
-  const btnChangeMail = document.getElementById('ChangeMail');
-  const btnChangePass = document.getElementById('ChangePassword');
-  btnChangePic.addEventListener('click', updatePhoto);
-  */
-
-  // Cambiar foto
-  // Cambiar nombre
-  // Cambiar correo
-  // Cambiar contraseña
 }
