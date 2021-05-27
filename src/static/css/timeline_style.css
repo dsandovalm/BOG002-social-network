@@ -16,10 +16,6 @@ footer img{padding: 0.5px}
 #mapa{
 
     width: 100%;
-<<<<<<< HEAD
-    height: 100%px; /*Solo sirve en mobile, hacer responsive*/
-}
-=======
     height: 530px; /*Solo sirve en mobile, hacer responsive*/
     padding: 10px; 
 }
@@ -55,4 +51,3 @@ footer img{padding: 0.5px}
   display:flex;
   justify-content: space-around;
 }
->>>>>>> e73e816800f33b113300687fd168ba36f51260e1

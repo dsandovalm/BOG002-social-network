@@ -9,10 +9,12 @@ body {
 
 /* Selector de clases que comiencen con 'icon', configuración de íconos en toda la app*/
 [class ^= "icon"]{
-    width: auto;
-    height: 40px;
+    display: inline-flex;
+    float: right;
+    margin-right: 2%;
+    margin-bottom: 0%;
+    width: 40px;
     cursor: pointer;
-    margin: 2px;
 }
 
 /*Selector de clases que comiencen con 'btn', configuración de botones en toda la app*/
