@@ -1,4 +1,5 @@
-import { createPost, reactPost } from "../model/post.js";
+import { createPost } from '../model/post.js';
+//import { geoFindMe } from '../model/location.js'
 
 // He decidido meter acá todo lo relacionado con la visualización de posts
 
@@ -73,7 +74,7 @@ const modal = {
     render(htmlText) {
         const div = document.createElement('div');
         div.className = 'report'; // En serio es necesaria la clase?
-        div.innerHTML = `${htmlText} <p id="close">Salir</p>`;
+        div.innerHTML = `<img id = "close" src = "static/images/icons/icon-close.png">${htmlText}`;
         return div;
     },
     afterRender(functions){
@@ -81,8 +82,6 @@ const modal = {
             let btn = document.getElementById(f.id);
             btn.addEventListener('click', f.method);
         });
-        const btnClose = document.getElementById('close');
-        btnClose.addEventListener('click', closeFunction);
     },
 }
 
@@ -99,7 +98,7 @@ const buttons = {
             let description = document.getElementById('reportDesc').value;
             let repImage = document.getElementById('uploadImg').files[0];
             let repType = document.getElementById('reportType').value;
-            createPost({ lat: 0, lng: 0 }, repType, repImage, description);}
+            createPost( repType, repImage, description);}
     }/* , 
     like: {
         id:'btnLike', 

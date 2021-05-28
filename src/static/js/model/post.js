@@ -1,26 +1,27 @@
-export function createPost( ubicationReport, typeReport, photoReport, descriptionReport ) {
-    
+
+export function createPost(typeReport, photoReport, descriptionReport ) {
     // - - - - - - - - - Crea un objeto post
+    function success(pos) {
+        let crd = pos.coords;
 
-    const post = {
+        const post = {
+            ubication: [ crd.latitude, crd.longitude ],
+            type: typeReport,
+            description: descriptionReport,
+            user: firebase.auth().currentUser.uid,
+            date: new Date(),
+            timeline: true, // Esto pasa a ser false cuando han pasado 48 horas desde que se subió
+            stats: {
+                like: 0,
+                meh: 0,
+                dislike: 0,
+                views: 0
+            },
+        }
 
-        ubication: ubicationReport,
-        type: typeReport,
-        description: descriptionReport,
+        console.log(post.ubication);
 
-        user: 'user Id',
-        date: new Date(),
-        timeline: true, // Esto pasa a ser false cuando han pasado 48 horas desde que se subió
-        stats: {
-            like: 0,
-            meh: 0,
-            dislike: 0,
-            views: 0
-        },
-    }
-    
-    // - - - - - - - - - Guarda el objeto post en el firestore
-
+        // - - - - - - - - - Guarda el objeto post en el firestore
     firebase.firestore().
     collection("Posts").add( post )
     .then((docRef) => {
@@ -47,10 +48,18 @@ export function createPost( ubicationReport, typeReport, photoReport, descriptio
     .catch((error) => {
       console.error('Error adding document: ', error);
     });
-  return post;
+
+      };
+      
+      function error(err) {
+        console.warn('ERROR(' + err.code + '): ' + err.message);
+      };
+      
+    return navigator.geolocation.getCurrentPosition(success, error);
+    
 }
 
-export function reactPost (postId,likeType){
+/* export function reactPost (postId,likeType){
     // Toma el post y le añade 1 like
     let promise;
     switch(likeType){
@@ -92,3 +101,4 @@ export function reactPost (postId,likeType){
         console.error("Error writing document: ", error);
     });       
 }
+ */

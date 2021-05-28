@@ -12,22 +12,19 @@ footer img{padding: 0.5px}
 .icon-profile,#icon-settings{
     float: right
 }
-/*Propiedades del mapa*/
-#mapa{
-
-    width: 100%;
-    height: 530px; /*Solo sirve en mobile, hacer responsive*/
-    padding: 10px; 
+/* 
+#map{
+  margin-top:10px;
+  width: calc(100vw - 30px);
+  height: calc(100vh - 80px); /*Solo sirve en mobile, hacer responsive
 }
-
-
-/* - - - Pop Up - - - */
 
 #modal{
   width:100%;
   height:100%;
-  position: absolute;
-}
+  position: fixed; 
+}*/
+
 .report {
     max-width:500px;
     width: 80%;
@@ -50,4 +47,32 @@ footer img{padding: 0.5px}
 .reactions{ 
   display:flex;
   justify-content: space-around;
+}
+
+#post-container {
+  padding: 20px 0;
+  position: relative;
+}
+
+#map {
+  width: calc(100vw - 30px);
+  height: calc(100vh - 80px);
+  margin: auto;
+  margin-top: 20px;
+  position: relative;
+  z-index: 50;
+}
+
+.report {
+  height: 300px;
+  width: 60%;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background-color: white;
+  border-radius: 20px;
+  border: solid 1.5px;
 }

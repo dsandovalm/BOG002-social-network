@@ -1,4 +1,4 @@
-export const bubble = {
+/* export const bubble = {
     render: (post) => {
         // Una burbuha es una imagen flotante de radio R y centro en X,Y. 
         // Por ahora no me preocupo por definir como se grafica.
@@ -25,7 +25,6 @@ export const bubble = {
         div.style.top = (map.h * (post.lng - map.lngmin) / (map.lngmax-map.lngmin) );
         div.style.left = (map.w * (post.lat - map.latmin) / (map.latmax-map.latmin) );
         // Podria pasarsele el mapa como parametro y que se agreguen alli mismo
-        */
         return div;
     },
     afterRender: (post, openFunction) => {
@@ -35,3 +34,4 @@ export const bubble = {
         })
     }
 } 
+ */
