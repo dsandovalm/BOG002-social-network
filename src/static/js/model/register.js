@@ -10,8 +10,8 @@ export function registerData(profile) {
     methods: '',
     photo: profile.user.photoURL,
   }
-//crear el condicional para eliminar la duplicacion en la colección
-  db.collection('Users').add( user )
+
+  db.collection('Users').doc( firebase.auth().currentUser.uid ).set( user )
     .then((docRef) => {
       console.log('Document written with ID: ', docRef.id);
     })

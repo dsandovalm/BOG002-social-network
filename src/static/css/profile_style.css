@@ -209,7 +209,6 @@
 @media screen 
   and (max-width: 2000px)
   and (min-width: 800px){
-
     .search {
         display: inline-flex;
         background-color: transparent;
@@ -303,4 +302,23 @@
         padding-top: 40%;
     }
 
+    #data-report{
+        background-color: #F0EEEE;
+        align-items: center;
+        margin-bottom: 4%;
+        font-size: 13px;
+    }
+
+    #container-user-report{
+        display: flex;
+    } 
+
+    .img-report{
+        border: solid 1.5px;
+        width: 80%;
+    }
+
+    [id ^= "point"]{
+        width: 25%;
+    }
   }

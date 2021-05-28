@@ -1,7 +1,7 @@
 export function initMap(container) {
   //let location = await geoFindMe()
   const tileProvider = 'https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png'
-  let map = L.map(container).locate({ setView: true, maxZoom: 16 });
+  let map = L.map(container).locate({ setView: true, maxZoom: 16});
   L.tileLayer(tileProvider, {
   }).addTo(map)
 
@@ -11,13 +11,6 @@ export function initMap(container) {
   }
 
   map.on('locationfound', onLocationFound);
+  return map;
 }
 
-
-  export const geoFindMe = () => {
-  const successCallback = (position) => {}
-    
-  const errorCallback = (error) => {
-  };
-  navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-};

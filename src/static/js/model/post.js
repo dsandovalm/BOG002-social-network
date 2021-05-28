@@ -1,55 +1,53 @@
+import { db } from '../controler/firebase_config.js';
 
 export function createPost(typeReport, photoReport, descriptionReport ) {
-    // - - - - - - - - - Crea un objeto post
+    
     function success(pos) {
-        let crd = pos.coords;
 
+        // Obtiene coordenadas (latitud y longitud)
+        let crd = pos.coords;
+        //  Crea un objeto post
         const post = {
             ubication: [ crd.latitude, crd.longitude ],
             type: typeReport,
             description: descriptionReport,
             user: firebase.auth().currentUser.uid,
             date: new Date(),
-            timeline: true, // Esto pasa a ser false cuando han pasado 48 horas desde que se subió
             stats: {
-                like: 0,
-                meh: 0,
-                dislike: 0,
-                views: 0
-            },
+                like:[],
+                doubt:[],
+                dislike:[],
+                views:0
+            }
         }
-
-        console.log(post.ubication);
-
-        // - - - - - - - - - Guarda el objeto post en el firestore
-    firebase.firestore().
-    collection("Posts").add( post )
-    .then((docRef) => {
-
-        console.log("Document written with ID: ", docRef.id);
-
-        const photoRef = firebase.storage().ref().child(`images/${docRef.id}.jpg`);
-        photoRef.put(photoReport).then((snapshot) => {
-            console.log('Uploaded a blob or file!', snapshot);
-            return snapshot;
-        });
-
+        
+        // Guarda el objeto post en el firestore
         firebase.firestore().
-        collection("Posts").doc(docRef.id).set({
-            photo: `images/${docRef.id}.jpg`
-        }, { merge: true })
-        .then(() => {
-            console.log("Document successfully written!");
-        })
-        .catch((error) => {
-            console.error("Error writing document: ", error);
-        });
-    })
-    .catch((error) => {
-      console.error('Error adding document: ', error);
-    });
+        collection("Posts").add( post )
+        .then((docRef) => {
+            console.log("Document written with ID: ", docRef.id);
+            
+            // Guarda la foto en storage
+            const photoRef = firebase.storage().ref().child(`images/${docRef.id}.jpg`);
+            photoRef.put(photoReport).then((snapshot) => {
+                console.log('Se ha subido una foto!', snapshot);
+                return snapshot;
+            });
 
-      };
+            // Añade la direccion de la foto al campo photo del post
+            firebase.firestore().
+            collection("Posts").doc(docRef.id).set({
+                photo: `images/${docRef.id}.jpg`
+            }, { merge: true }).then(() => {
+                console.log("Se ha guardado la dirección de la foto");
+            }).catch((error) => {
+                console.error("Error al subir la foto: ", error);
+            });
+        }).catch((error) => {
+        console.error('Error al crear el post: ', error);
+        });
+
+        };
       
       function error(err) {
         console.warn('ERROR(' + err.code + '): ' + err.message);
@@ -59,46 +57,51 @@ export function createPost(typeReport, photoReport, descriptionReport ) {
     
 }
 
-/* export function reactPost (postId,likeType){
-    // Toma el post y le añade 1 like
-    let promise;
-    switch(likeType){
-        case 'like':
-            promise = firebase.firestore().collection("Posts").doc(postId).update({
-                stats: {
-                    like: firebase.firestore.FieldValue.increment(1),
-                    dislike: firebase.firestore.FieldValue.increment(0),
-                    meh: firebase.firestore.FieldValue.increment(0),
-                    views: firebase.firestore.FieldValue.increment(0),
-                }
-            })
-            break;
-        case 'dislike':
-            promise = firebase.firestore().collection("Posts").doc(postId).update({
-                stats: {
-                    like: firebase.firestore.FieldValue.increment(0),
-                    dislike: firebase.firestore.FieldValue.increment(1),
-                    meh: firebase.firestore.FieldValue.increment(0),
-                    views: firebase.firestore.FieldValue.increment(0),
-                }
-            })
-            break;
-        case 'meh':
-            promise = firebase.firestore().collection("Posts").doc(postId).update({
-                stats: {
-                    like: firebase.firestore.FieldValue.increment(0),
-                    dislike: firebase.firestore.FieldValue.increment(0),
-                    meh: firebase.firestore.FieldValue.increment(1),
-                    views: firebase.firestore.FieldValue.increment(0),
-                }
-            })
-            break;
-    }
-    promise.then(() => {
-        console.log(likeType, ' !');
-    })
-    .catch((error) => {
-        console.error("Error writing document: ", error);
-    });       
+export const deletePost = (postId) =>{
+    db.collection('Posts').doc(postId).delete().then(() => {
+        console.log("Document successfully deleted!");
+    }).catch((error) => {
+        console.error("Error removing document: ", error);
+    });
 }
- */
+
+
+
+export function reactPost (postId,likeType){
+
+    // Opción A: stats es un campo 
+    let postRef = firebase.firestore().collection('Posts').doc( postId );
+
+    postRef.get().then( (post) => {
+
+        let current = {}
+
+        for (const reaction in post.data().stats) {
+            current[reaction] = post.data().stats[reaction]
+            let index = current[reaction].indexOf( firebase.auth().currentUser.uid );
+            if( index != -1 ) {
+                current[reaction].splice( index, 1 );
+            }
+        }
+
+        switch(likeType){
+            case 'like':
+                current.like.push( firebase.auth().currentUser.uid );
+                break;
+            case 'dislike':
+                current.dislike.push( firebase.auth().currentUser.uid );
+                break;
+            case 'doubt':
+                current.doubt.push( firebase.auth().currentUser.uid );
+                break;
+            default:
+                break;
+        }
+        postRef.update({
+            stats: current
+        }).then( () => {
+            console.log(likeType , '!')
+        }) 
+       
+    });
+}

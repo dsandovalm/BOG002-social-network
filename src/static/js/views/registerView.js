@@ -8,7 +8,7 @@ export const renderRegister = () => {
         <div class = "container-register">
             <h2>Cuentanos más sobre ti</h2>
             <p>Nombre</p>
-            <input type="text" id="input-name"></input>
+            <input type="text" id="input-name" required></input>
             <p>Descripción general</p>
             <input type="text" id="input-description"></input>
             <p>Métodos de transporte regulares</p>

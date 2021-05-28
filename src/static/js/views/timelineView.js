@@ -1,6 +1,6 @@
 import { modalCreate, modalView } from './postPopUp.js';
-/* import { bubble } from './postBubbles.js'; */
-import { geoFindMe, initMap } from '../model/location.js';
+import { displayMarker } from './postBubbles.js'; 
+import { initMap } from '../model/location.js';
 
 //El timeline debe recibir un arreglo de posts que entran en el area de visualización
 
@@ -39,12 +39,13 @@ function openPopUp(div) {
 export function afterRenderTimeline() {
 
   const divMap = document.querySelector('#map');
-  initMap(divMap);
+  const map = initMap(divMap);
+
+  displayMarker(map);
 
   const iconProfile = document.querySelector('#icon-profile');
   iconProfile.addEventListener('click', () => {
-    console.log(geoFindMe());
-    /* window.location.assign('#/profile'); */
+    window.location.assign('#/profile'); 
   });
 
   const iconReport = document.querySelector('#icon-report');

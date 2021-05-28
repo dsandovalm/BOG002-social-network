@@ -76,3 +76,8 @@ footer img{padding: 0.5px}
   border-radius: 20px;
   border: solid 1.5px;
 }
+
+.bubble {
+  border-radius: 50%;
+  border: solid 1px #000;
+}

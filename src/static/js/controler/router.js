@@ -35,7 +35,7 @@ export const init = () => {
             // doc.data() is never undefined for query doc snapshots
             let user = doc.data();
             container.appendChild(renderProfile(user));
-            afterRenderProfile();
+            afterRenderProfile()
           });
         })
 
@@ -61,7 +61,6 @@ export const init = () => {
     }
   }
 };
-
 /* firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     window.location.assign('#/timeline');
