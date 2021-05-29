@@ -1,4 +1,4 @@
-import { getDataPost } from '../model/profile.js'
+import { getDataPost, getUserStars } from '../model/profile.js'
 
 export const renderProfile = (user) => {
   const description = (user.description === '' ? 'Agrega una descripción...' : user.description);
@@ -20,7 +20,7 @@ export const renderProfile = (user) => {
         <div id="container-data">
           <img class="user-image" src="${user.photo}">
           <h3 id="user-name">${user.name}</h3>
-          <p class="calification"></p>
+          <p id="user-calification" class="calification"></p>
           <h3 id="user-description">Descripción</h3>
           <p class="description">${description}</p>
           <h3 id="user-transport">Medio de transporte</h3>
@@ -53,9 +53,9 @@ export function afterRenderProfile() {
     window.location.assign('#/settings');
   })
 
-  const reportContainer = document.querySelector('#container-user-report')
+  const reportContainer = document.querySelector('#container-user-report');
+  const calification = document.querySelector('#user-calification');
   getDataPost(reportContainer)
-
-
+  getUserStars(calification)
 
 }
