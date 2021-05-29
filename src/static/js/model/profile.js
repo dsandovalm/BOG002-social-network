@@ -39,4 +39,33 @@ export function getDataPost(container) {
   return post
 }
 
-
+export function getUserStars(container){
+  /* - - - calculo de las estrellas - - - */ 
+  firebase.firestore()
+  .collection('Posts').where( 'user', '==', user.id )
+  .get().then((snapshot) => {
+    let total = {
+      like:0,
+      doubt:0,
+      dislike:0,
+    }
+    
+    snapshot.forEach(post => {
+      total.like += post.data().stats.like.length;
+      total.doubt += post.data().stats.doubt.length;
+      total.dislike += post.data().stats.dislike.length;
+    });
+    
+    let stars = Math.round( (total.like * 5 + total.dislike * 3) / ( total.like + total.doubt + total.dislike) )
+    let html = ``;
+    // Acá iria la renderización de 5 spans o imagenes
+    for(let i=0; i<5;i++){
+      if( i<stars ) {
+        html += `<span class="star star-full"></span>`
+      } else {
+        html += `<span class="star star-void"></span>`
+      }
+    }
+    container.innerHtml = html;
+  })
+}
