@@ -65,15 +65,39 @@ export const deletePost = (postId) =>{
     });
 }
 
+function calculatePoints(post){
+    let likes = post.stats.like.length();
+    let dislikes = post.stats.dislike.length();
+    let points = likes - dislikes;
+    return points;  
+}
+
+function isLiked(post){
+    let result = {
+        isThis: false
+    }
+    for (const react in post.stats) {
+        let index = post.stats[react].indexOf( firebase.auth().currentUser.uid );
+        if ( index != -1 ) {
+            result = {
+                isThis: true,
+                reaction: react,
+                index: index,
+            }
+        }
+    }
+    return result
+}
+
 
 
 export function reactPost (postId,likeType){
-
-    // Opción A: stats es un campo 
-    let postRef = firebase.firestore().collection('Posts').doc( postId );
-
-    postRef.get().then( (post) => {
-
+    
+    // Toma el post y le añade 1 like
+    let postRef = firebase.firestore().collection("Posts").doc(postId).get();
+    postRef.then( (post) => {
+        
+        /*
         let current = {}
 
         for (const reaction in post.data().stats) {
@@ -97,11 +121,26 @@ export function reactPost (postId,likeType){
             default:
                 break;
         }
+        */
+        
+        let current = post.data().stats;
+        // Revisa que el usuario no tenga likes en el post
+        let liked = isLiked( post.data() );
+
+        // 3 casos: liked.isThis = false, liked.reaction === likeType, liked.reaction != likeType
+        if( liked.isThis ) {
+            current[ liked.reaction ].splice( liked.index, 1 );
+            if( liked.reaction != likeType ) {
+                current[likeType].push( firebase.auth().currentUser.uid );
+            }
+        } else {
+            current[likeType].push( firebase.auth().currentUser.uid );
+        }
+
         postRef.update({
             stats: current
-        }).then( () => {
-            console.log(likeType , '!')
-        }) 
-       
-    });
+        })
+    }).catch((error) => {
+        console.error("Error writing document: ", error);
+    });    
 }
