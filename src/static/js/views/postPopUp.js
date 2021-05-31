@@ -28,43 +28,45 @@ const modal = {
         </div>
         <button class="btn" id="btnPost">Publicar</button>`,
     view(post,user,time,url){
-        return `
-        <div class="flex">
-            <div class="flex mid ">
-            <img class="profile-small" src="${user.profilepic}">
-            <div>
-                <div>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
-                <span class="star"></span>
+        return `<div class="flex">
+            <div class="mid ">
+                <div class="flex">
+                    <img class="profile-small" src="${user.profilepic}">
+                    <div>
+                        <div>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                        </div>
+                        <p>${user.name}</p>
+                    </div>
                 </div>
-                <p>${user.name}</p>
-            </div>
+                <div>
+                    <p>${time}</p>
+                    <p>Tipo de Reporte</p>
+                    <p>${post.type}</p>
+                </div>
+                <div>
+                    <h3>Descripción del reporte</h3>
+                    <p>${post.description}</p>
+                </div>
             </div>
             <div class="mid">
-            <p>${time}</p>
-            <p>Tipo de Reporte</p>
-            <p>${post.type}</p>
-            </div>
-        </div>
-        <div class="flex">
-            <div class="mid">
-            <h3>Descripción del reporte</h3>
-            <p>${post.description}</p>
-            </div>
-            <img class="mid" src="${url}">
-        </div>
-        <div class="reactions">
-            <div class="btn-reaction-like" id="btnLike">
-            <img src="static/images/icons/btn-like.png" alt="Es Útil">
-            </div>
-            <div class="btn-reaction-doubt" id="btnDoubt">
-            <img src="static/images/icons/btn-doubt.png" alt="Lo dudo">
-            </div>
-            <div class="btn-reaction-dislike" id="btnDislike">
-            <img src="static/images/icons/btn-dislike.png" alt="No es Útil">
+                <h3>Foto Evidencia</h3>
+                <img class="mid" src="${url}">
+                <div class="reactions">
+                    <div class="btn-reaction-like" id="btnLike">
+                        <img src="static/images/icons/btn-like.png" alt="Es Útil">
+                    </div>
+                    <div class="btn-reaction-doubt" id="btnDoubt">
+                        <img src="static/images/icons/btn-doubt.png" alt="Lo dudo">
+                    </div>
+                    <div class="btn-reaction-dislike" id="btnDislike">
+                        <img src="static/images/icons/btn-dislike.png" alt="No es Útil">
+                    </div>
+                </div>
             </div>
         </div>`
     },
