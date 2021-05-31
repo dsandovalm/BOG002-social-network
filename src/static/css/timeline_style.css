@@ -81,3 +81,11 @@ footer img{padding: 0.5px}
   border-radius: 50%;
   border: solid 1px #000;
 }
+
+.reactions div{
+  background-color: #0000;
+  margin: 0;
+}
+.reactions img{
+  max-width: 100%;
+}
