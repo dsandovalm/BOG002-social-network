@@ -1,10 +1,62 @@
 import { modalView } from './postPopUp.js';
 
 export function displayMarker(map) {
+
+    function createMarker (post,url){
+
+        let iconMarker = L.icon({
+            iconUrl: url,
+            iconSize: [70, 70],
+            iconAnchor: [25, 50],
+            className: 'bubble'
+        })
+
+        let marker = new L.marker(post.ubication, {icon: iconMarker,})
+        .bindPopup(post.description)
+        .addTo(map);
+
+        marker.on('click', () => {
+            firebase.firestore()
+            .collection('Users').where('id', '==' , post.user)
+            .get().then( (users) => {
+                
+                /* Abrir popUp con: 
+                Post = firebase.firestore().collection('Posts').doc(doc.id);
+                User = firebase.firestore()*/
+                users.forEach( user => {
+                    
+                    let seconds = ((now/1000) - post.date.seconds);
+                    let time;
+                    if( seconds < 60){
+                        time = 'Hace un momento'
+                    } else if( seconds < 3600) {
+                        time = `Hace ${Math.floor(seconds/60)} minutos` 
+                    } else {
+                        time = `Hace ${Math.floor(seconds/3600)} horas` 
+                    }
+
+                    let div = modalView.render( post, user.data(), time /*doc.date.toString()*/,url );
+
+                    document.getElementById('modal').style.display = 'block';
+                    document.getElementById('modal').appendChild(div);
+
+                    modalView.afterRender( () => {
+                        document.getElementById('modal').innerHTML = '';
+                        document.getElementById('modal').style.display = 'none';
+                        },
+                        doc.id
+                    )
+                })
+            }).catch( (error) => {
+                console.log('Error al obtener los datos del usuario ', error)
+            })
+        })
+    }
+
     let now = new Date();
     let limit = new Date ( now - (48*3600*1000));
-
-    let post = firebase.firestore()
+    
+    let posts = firebase.firestore()
     .collection('Posts').where('date', '>', limit )
     .get().then((snapshot) => {
         //Obtiene todos los posts hechos despues de la fecha limite
@@ -12,63 +64,23 @@ export function displayMarker(map) {
             // Create a reference to the file whose metadata we want to retrieve
             let photoRef = firebase.storage().ref().child(doc.data().photo);
             photoRef.getDownloadURL().then(function(url) {
+
                 // Get the download URL for 'images/stars.jpg'
                 // This can be inserted into an <img> tag
                 // This can also be downloaded directly
+                createMarker(doc.data(),url)
 
-                let iconMarker = L.icon({
-                    iconUrl: url,
-                    iconSize: [70, 70],
-                    iconAnchor: [25, 50],
-                    className: 'bubble'
-                })
-    
-                let marker = new L.marker(doc.data().ubication, {icon: iconMarker,})
-                .bindPopup(doc.data().description)
-                .addTo(map);
-
-                marker.on('click', () => {
-                    firebase.firestore()
-                    .collection('Users').where('id', '==' , doc.data().user)
-                    .get().then( (users) => {
-                        
-                        /* Abrir popUp con: 
-                        Post = firebase.firestore().collection('Posts').doc(doc.id);
-                        User = firebase.firestore()*/
-                        users.forEach( user => {
-                            
-                            let seconds = ((now/1000) - doc.data().date.seconds);
-                            let time;
-                            if( seconds < 60){
-                                time = 'Hace un momento'
-                            } else if( seconds < 3600) {
-                                time = `Hace ${Math.floor(seconds/60)} minutos` 
-                            } else {
-                                time = `Hace ${Math.floor(seconds/3600)} horas` 
-                            }
-
-                            let div = modalView.render( doc.data(), user.data(), time /*doc.date.toString()*/,url );
-
-                            document.getElementById('modal').style.display = 'block';
-                            document.getElementById('modal').appendChild(div);
-
-                            modalView.afterRender( () => {
-                                document.getElementById('modal').innerHTML = '';
-                                document.getElementById('modal').style.display = 'none';
-                                },
-                                doc.id
-                            )
-                        })
-                    })
-                })
             }).catch(function(error) {
+
                 console.log('No se pudo obtener la URL de la imagen ', error);
+                createMarker(doc.data(),'../../imagesdefault.jpg');
             });
+            
         });
     }).catch( (error) => {
         console.log(" Error al obtener los posts ", error)    
     })
-    return post
+    return posts
 }
 
 /* export const bubble = {
