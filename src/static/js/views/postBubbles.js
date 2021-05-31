@@ -2,7 +2,7 @@ import { modalView } from './postPopUp.js';
 
 export function displayMarker(map) {
 
-    function createMarker (post,url){
+    function createMarker (doc,url){
 
         let iconMarker = L.icon({
             iconUrl: url,
@@ -11,21 +11,21 @@ export function displayMarker(map) {
             className: 'bubble'
         })
 
-        let marker = new L.marker(post.ubication, {icon: iconMarker,})
-        .bindPopup(post.description)
+        let marker = new L.marker(doc.data().ubication, {icon: iconMarker,})
+        .bindPopup(doc.data().description)
         .addTo(map);
 
         marker.on('click', () => {
             firebase.firestore()
-            .collection('Users').where('id', '==' , post.user)
+            .collection('Users').where('id', '==' , doc.data().user)
             .get().then( (users) => {
                 
                 /* Abrir popUp con: 
-                Post = firebase.firestore().collection('Posts').doc(doc.id);
+                doc.data() = firebase.firestore().collection('doc.data()s').doc(doc.id);
                 User = firebase.firestore()*/
                 users.forEach( user => {
                     
-                    let seconds = ((now/1000) - post.date.seconds);
+                    let seconds = ((now/1000) - doc.data().date.seconds);
                     let time;
                     if( seconds < 60){
                         time = 'Hace un momento'
@@ -35,7 +35,7 @@ export function displayMarker(map) {
                         time = `Hace ${Math.floor(seconds/3600)} horas` 
                     }
 
-                    let div = modalView.render( post, user.data(), time /*doc.date.toString()*/,url );
+                    let div = modalView.render( doc.data(), user.data(), time /*doc.date.toString()*/,url );
 
                     document.getElementById('modal').style.display = 'block';
                     document.getElementById('modal').appendChild(div);
@@ -68,14 +68,14 @@ export function displayMarker(map) {
                 // Get the download URL for 'images/stars.jpg'
                 // This can be inserted into an <img> tag
                 // This can also be downloaded directly
-                createMarker(doc.data(),url)
+                createMarker(doc,url)
 
             }).catch(function(error) {
 
                 console.log('No se pudo obtener la URL de la imagen ', error);
-                createMarker(doc.data(),'../../imagesdefault.jpg');
+                createMarker(doc,'../../imagesdefault.jpg');
             });
-            
+
         });
     }).catch( (error) => {
         console.log(" Error al obtener los posts ", error)    
