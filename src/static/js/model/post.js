@@ -17,7 +17,6 @@ export function createPost(typeReport, photoReport, descriptionReport ) {
                 like:[],
                 doubt:[],
                 dislike:[],
-                views:0
             }
         }
         
@@ -31,18 +30,30 @@ export function createPost(typeReport, photoReport, descriptionReport ) {
             const photoRef = firebase.storage().ref().child(`images/${docRef.id}.jpg`);
             photoRef.put(photoReport).then((snapshot) => {
                 console.log('Se ha subido una foto!', snapshot);
+                // Añade la direccion de la foto al campo photo del post
+                firebase.firestore().
+                collection("Posts").doc(docRef.id).set(
+                    { photo: `images/${docRef.id}.jpg` },
+                    { merge: true }
+                ).then(() => {
+                    console.log("Se ha guardado la dirección de la foto");
+                }).catch((error) => {
+                    console.error("Error ", error);
+                });
                 return snapshot;
-            });
-
-            // Añade la direccion de la foto al campo photo del post
-            firebase.firestore().
-            collection("Posts").doc(docRef.id).set({
-                photo: `images/${docRef.id}.jpg`
-            }, { merge: true }).then(() => {
-                console.log("Se ha guardado la dirección de la foto");
             }).catch((error) => {
                 console.error("Error al subir la foto: ", error);
+                firebase.firestore().
+                collection("Posts").doc(docRef.id).set(
+                    { photo: `images/default.jpg` },
+                    { merge: true }
+                ).then(() => {
+                    console.log("Se ha guardado la dirección de la foto");
+                }).catch((error) => {
+                    console.error("Error ", error);
+                });
             });
+            
         }).catch((error) => {
         console.error('Error al crear el post: ', error);
         });
@@ -65,9 +76,9 @@ export const deletePost = (postId) =>{
     });
 }
 
-function calculatePoints(post){
-    let likes = post.stats.like.length();
-    let dislikes = post.stats.dislike.length();
+export function calculatePoints(post){
+    let likes = post.stats.like.length;
+    let dislikes = post.stats.dislike.length;
     let points = likes - dislikes;
     return points;  
 }
@@ -77,6 +88,7 @@ function isLiked(post){
         isThis: false
     }
     for (const react in post.stats) {
+        console.log(post.stats[react])
         let index = post.stats[react].indexOf( firebase.auth().currentUser.uid );
         if ( index != -1 ) {
             result = {
@@ -94,8 +106,8 @@ function isLiked(post){
 export function reactPost (postId,likeType){
     
     // Toma el post y le añade 1 like
-    let postRef = firebase.firestore().collection("Posts").doc(postId).get();
-    postRef.then( (post) => {
+    let postRef = firebase.firestore().collection("Posts").doc(postId);
+    postRef.get().then( (post) => {
         
         /*
         let current = {}
