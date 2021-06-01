@@ -209,6 +209,10 @@
 @media screen 
   and (max-width: 2000px)
   and (min-width: 800px){
+
+    .options-dropdown{
+        display: none;
+    }
     .search {
         display: inline-flex;
         background-color: transparent;
