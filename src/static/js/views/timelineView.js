@@ -1,58 +1,55 @@
-import { modalCreate, modalView } from './postPopUp.js';
-import { displayMarker } from './postBubbles.js'; 
+import { modalCreate /* , modalView */ } from './postPopUp.js';
+import { displayMarker } from './postBubbles.js';
 import { initMap } from '../model/location.js';
-
-//El timeline debe recibir un arreglo de posts que entran en el area de visualización
 
 export const renderTimeline = () => {
   const html = `
-    <section id="muro">
+      <header>
+        <img id="icon-profile" class="icon-profile" src="static/images/icons/icon-profile.png">
+        <img id="icon-settings" class="icon-settings" src="static/images/icons/icon-settings.png">
+        <img id="icon-report" class="icon-report" src="static/images/icons/icon-add.png">
+        <form autocomplete="off">
+          <div>
+            <input type="text" name="input-search" placeholder="Buscar una dirección...">
+          </div>
+        </form>
+        <!-- <input maxlength="100" autocomplete="off">
+        <img id=icon-lupa src="static/images/icons/icon-lupa.png"> -->
+      </header>
+      <div id = "post-container">
+        <div id="map"></div> 
+        <div id="modal"></div>
+      </div>`;
 
-    <header>
-      <img id="icon-profile" class="icon-profile" src="static/images/icons/icon-profile.png">
-      <img id="icon-settings" class="icon-settings" src="static/images/icons/icon-settings.png">
-      <img id="icon-report" class="icon-report" src="static/images/icons/icon-add.png">
-      <input maxlength="100" autocomplete="off">
-      <img id=icon-lupa src="static/images/icons/icon-lupa.png">
-    </header>
-    <div id = "post-container">
-      <div id="map"></div> 
-      <div id="modal"></div>
-    </div>     
-    </section>
-    `;
+  const section = document.createElement('section');
+  section.setAttribute('id', 'muro');
+  section.innerHTML = html;
 
-
-  const div = document.createElement('div');
-  div.innerHTML = html;
-
-  return div;
+  return section;
 };
 
 function openPopUp(div) {
-  console.log("modal abierto");
   document.getElementById('modal').style.display = 'block';
   document.getElementById('modal').innerHTML = '';
   document.getElementById('modal').appendChild(div);
 }
 
 export function afterRenderTimeline() {
-
   const divMap = document.querySelector('#map');
   const map = initMap(divMap);
-
   displayMarker(map);
 
   const iconProfile = document.querySelector('#icon-profile');
   iconProfile.addEventListener('click', () => {
-    window.location.assign('#/profile'); 
+    window.location.assign('#/profile');
   });
 
   const iconReport = document.querySelector('#icon-report');
   iconReport.addEventListener('click', () => {
-    openPopUp(modalCreate.render());
-    modalCreate.afterRender(() =>{
-      console.log("modal cerrado");
+    openPopUp(modalCreate.render(() => {
+      document.getElementById('modal').style.display = 'none';
+    }));
+    modalCreate.afterRender(() => {
       document.getElementById('modal').style.display = 'none';
     });
   });
@@ -62,11 +59,3 @@ export function afterRenderTimeline() {
     window.location.assign('#/settings');
   });
 }
-  //Deberia haber un after render tambien de los posts
-  /* visiblePosts.forEach(post => {
-    bubble.afterRender(
-      post, openPopUp( 
-        modalView.render(post, user)
-      )
-    ) 
-  }); */

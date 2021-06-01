@@ -1,4 +1,6 @@
-import { updateName, updatePhoto, updateEmail, updatePassword, updateDescription } from '../model/settings.js';
+import {
+  updateName, updatePhoto, updateEmail, updatePassword, updateDescription,
+} from '../model/settings.js';
 
 const settingsPad = {
   picture: `
@@ -82,43 +84,43 @@ const settingsPad = {
 export const changeSettings = {
   picture() {
     document.getElementById('settPad').innerHTML = settingsPad.picture;
-    const updatePhotoBtn = document.querySelector('#btn-update-photo')
-    updatePhotoBtn.addEventListener('click', (e) => {
-      const photo = document.querySelector('#photo').value
+    const updatePhotoBtn = document.querySelector('#btn-update-photo');
+    updatePhotoBtn.addEventListener('click', () => {
+      const photo = document.querySelector('#photo').value;
       updatePhoto(photo);
-    })
+    });
   },
   name() {
     document.getElementById('settPad').innerHTML = settingsPad.name;
-    const updateNameBtn = document.querySelector('#btn-update-name')
-    updateNameBtn.addEventListener('click', (e) => {
-      const name = document.querySelector('#name').value
+    const updateNameBtn = document.querySelector('#btn-update-name');
+    updateNameBtn.addEventListener('click', () => {
+      const name = document.querySelector('#name').value;
       updateName(name);
-    })
+    });
   },
   email() {
     document.getElementById('settPad').innerHTML = settingsPad.email;
-    const updateEmailBtn = document.querySelector('#btn-update-email')
-    updateEmailBtn.addEventListener('click', (e) => {
-      const newMail = document.querySelector('#mail').value
+    const updateEmailBtn = document.querySelector('#btn-update-email');
+    updateEmailBtn.addEventListener('click', () => {
+      const newMail = document.querySelector('#mail').value;
       updateEmail(newMail);
-    })
+    });
   },
   password() {
     document.getElementById('settPad').innerHTML = settingsPad.password;
-    const updatePasswordBtn = document.querySelector('#btn-update-password')
-    updatePasswordBtn.addEventListener('click', (e) => {
-      const newPassword = document.querySelector('#newPassword').value
+    const updatePasswordBtn = document.querySelector('#btn-update-password');
+    updatePasswordBtn.addEventListener('click', () => {
+      const newPassword = document.querySelector('#newPassword').value;
       updatePassword(newPassword);
-    })
+    });
   },
   description() {
     document.getElementById('settPad').innerHTML = settingsPad.description;
-    const updateDescriptionBtn = document.querySelector('#btn-update-description')
-    updateDescriptionBtn.addEventListener('click', (e) => {
-      const newDescription = document.querySelector('#newDescription').value
-      const newMethods = document.querySelector('#newMethods').value
+    const updateDescriptionBtn = document.querySelector('#btn-update-description');
+    updateDescriptionBtn.addEventListener('click', () => {
+      const newDescription = document.querySelector('#newDescription').value;
+      const newMethods = document.querySelector('#newMethods').value;
       updateDescription(newDescription, newMethods);
-    })
+    });
   },
 };

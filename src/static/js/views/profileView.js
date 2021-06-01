@@ -1,4 +1,4 @@
-import { getDataPost } from '../model/profile.js'
+import { getDataPost, getUserStars } from '../model/profile.js';
 
 export const renderProfile = (user) => {
   const description = (user.description === '' ? 'Agrega una descripción...' : user.description);
@@ -20,7 +20,7 @@ export const renderProfile = (user) => {
         <div id="container-data">
           <img class="user-image" src="${user.photo}">
           <h3 id="user-name">${user.name}</h3>
-          <p class="calification"></p>
+          <p id="user-calification" class="calification"></p>
           <h3 id="user-description">Descripción</h3>
           <p class="description">${description}</p>
           <h3 id="user-transport">Medio de transporte</h3>
@@ -30,10 +30,11 @@ export const renderProfile = (user) => {
         <div id="user-post">
           <h1 class="title-reports">Mis reportes</h1>
           <p class ="line-profile"></p>
-          <div id = "container-user-report"></div>
+          <div id ="container-user-report"></div>
         </div>
       </div>  
 
+      <div id ="modal-container"></div>
   </section>`;
 
   const div = document.createElement('div');
@@ -42,20 +43,19 @@ export const renderProfile = (user) => {
 };
 
 export function afterRenderProfile() {
-
-  const homeBtn = document.querySelector('#icon-home')
+  const homeBtn = document.querySelector('#icon-home');
   homeBtn.addEventListener('click', () => {
     window.location.assign('#/timeline');
-  })
+  });
 
-  const settingsBtn = document.querySelector('#icon-settings')
+  const settingsBtn = document.querySelector('#icon-settings');
   settingsBtn.addEventListener('click', () => {
     window.location.assign('#/settings');
-  })
+  });
 
-  const reportContainer = document.querySelector('#container-user-report')
-  getDataPost(reportContainer)
-
-
-
+  const reportContainer = document.querySelector('#container-user-report');
+  const modalContainer = document.querySelector('#modal-container');
+  const calification = document.querySelector('#user-calification');
+  getDataPost(reportContainer, modalContainer);
+  getUserStars(calification);
 }

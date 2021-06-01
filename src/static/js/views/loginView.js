@@ -4,12 +4,15 @@ export const renderLogin = () => {
   const html = `
     <section id="inicio">
 
+      <header>
         <div id="Presentation">
         <h1>WALKTER</h1>
         <h2 class="slogan">Apostemos por vías más seguras para todos.</h2>
         <img class="img-login" src="static/images/Web image.png" att="app">
         </div>
+      </header>
 
+      <body>
         <div id="register">
             <h1>WALKTER</h1>
             <form id="signin-form" class = "container-signin">
@@ -43,7 +46,7 @@ export const renderLogin = () => {
 
             </form>
         </div>
-
+      </body>
     </section>`;
 
   const div = document.createElement('div');

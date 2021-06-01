@@ -6,7 +6,6 @@ import { renderProfile, afterRenderProfile } from '../views/profileView.js';
 import { renderRegister, afterRenderRegister } from '../views/registerView.js';
 import { getUser } from '../model/profile.js';
 
-
 const container = document.getElementById('root');
 
 export const init = () => {
@@ -33,12 +32,11 @@ export const init = () => {
         getUser().then((snapshot) => {
           snapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
-            let user = doc.data();
-            container.appendChild(renderProfile(user));
-            afterRenderProfile()
+            const dataUser = doc.data();
+            container.appendChild(renderProfile(dataUser));
+            afterRenderProfile();
           });
-        })
-
+        });
         break;
       default:
         window.location.assign('#/timeline');

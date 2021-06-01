@@ -1,9 +1,9 @@
 /* Sección Settings*/
 
 .header {
-    display: flex;
-    height:90px;
-    justify-content: space-between;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
 }
 
 .content {
@@ -21,6 +21,11 @@
     justify-content:space-between;
 }
 
+h2, p, #settings {
+    margin-left: 0%;
+}
+
+
 .left{
     background-color: var(--verde);
     width: 24%;
@@ -35,6 +40,7 @@
     background-color: #D9D5D5;
     border: none;
     float: right;
+    width: 45%;
 }
 
 .input-container {
@@ -49,6 +55,7 @@
 }
 
 .note-container{
+    display: inline-block;
     padding: 10px;
     background-color: #D9D5D5;
     justify-content: space-around;

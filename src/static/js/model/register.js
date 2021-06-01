@@ -1,6 +1,6 @@
 import { db } from '../controler/firebase_config.js';
 
-/*Colección de datos para todos los usarios*/
+/* Colección de datos para todos los usarios */
 export function registerData(profile) {
   const user = {
     id: profile.user.uid,
@@ -9,43 +9,32 @@ export function registerData(profile) {
     description: '',
     methods: '',
     photo: profile.user.photoURL,
-  }
+  };
 
-  db.collection('Users').doc( firebase.auth().currentUser.uid ).set( user )
-    .then((docRef) => {
-      console.log('Document written with ID: ', docRef.id);
-    })
-    .catch((error) => {
-      console.error('Error adding document: ', error);
-    });
+  db.collection('Users').doc(firebase.auth().currentUser.uid).set(user)
+    .then((docRef) => docRef)
+    .catch((error) => error);
   return user;
 }
 
-/*Actualizar los datos de usuarios registrados con correo y contraseña*/
+/* Actualizar los datos de usuarios registrados con correo y contraseña */
 export const updateData = (userName, userDescription, userMethods, userPhoto) => {
-
-  db.collection('Users').where( 'id', '==', firebase.auth().currentUser.uid)
-  .get()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-          return db.collection('Users').doc(doc.id).update({
-            name: userName,
-            description: userDescription,
-            methods: userMethods,
-            photo: userPhoto,
+  db.collection('Users').where('id', '==', firebase.auth().currentUser.uid)
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        return db.collection('Users').doc(doc.id).update({
+          name: userName,
+          description: userDescription,
+          methods: userMethods,
+          photo: userPhoto,
+        })
+          .then(() => {
+            window.location.assign('#/timeline');
           })
-            .then(() => {
-              console.log("Document successfully updated!");
-              window.location.assign('#/timeline');
-            })
-            .catch((error) => {
-              // The document probably doesn't exist.
-              console.error("Error updating document: ", error);
-            });
+          .catch((error) => error);
       });
-  })
-  .catch((error) => {
-      console.log("Error getting documents: ", error);
-  });
+    })
+    .catch((error) => error);
 };

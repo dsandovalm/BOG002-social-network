@@ -1,35 +1,97 @@
 
 /* Sección del perfil */
+
+/* General */ 
+
+#container-data {
+    display: grid;
+    background: #FCDB4B;
+    border-radius: 12px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 2%;
+}
+
+#container-user-report{
+    display: flex;
+    flex-flow: row wrap;
+} 
+
+/* Dropdown */
+.optionBtn{
+    float: right;
+    width: 10%;
+}
+
+.options-dropdown {
+    display:none;
+    margin:0;
+    list-style: none;
+}
+
+#dropdown-post:hover{
+    background-color:transparent;
+}
+
+#dropdown-post:hover .options-dropdown {
+    background-color:#FFFFFF;
+    display: block;
+    position: absolute;  
+}
+
+/* Calification */
+
+.star {
+    width:20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 5px;
+    border:1px solid;
+} 
+
+.star-full {
+    background-color: black;
+}
+
+/* Posts */
+#data-report {
+    padding:10px;
+    width: 50%;
+}
+
+#data-report p {
+    padding: 10px 0;
+    margin: 0;
+}
+
+.img-report{
+    margin:0 10%;
+    border: solid 1.5px;
+    width: 80%;
+}
+
+.profile-reactions {
+    display:flex;
+    justify-content: center;
+    max-width: 100%;
+ }
+ .profile-reactions  img {
+     max-width: 33%;
+     padding:10px
+ }
+
+ /* Pop ups edición y borrar posts */
+ .profile-modal{
+     background-color: #FFFFFF;
+ }
+
+/* Responsive */
 @media screen 
   and (max-width: 460px)
   and (min-width: 360px){
 
-    .search {
-        display: inline-flex;
-        background-color: transparent;
-        height: 40px;
-    }
-
-    .bar-search {
-        border-top-left-radius: 12px;
-        border-bottom-left-radius: 12px;
-        border-color: #9f4bf2;
-    }
-    .img-search {
-        background-color: #9f4bf2; 
-        border-color: #9f4bf2; 
-        border: transparent;
-        border-end-end-radius: 12px;
-        border-start-end-radius: 12px;
-    }
-
     #container-data {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: minmax(100%, auto);
-        background: #FCDB4B;
         margin-top: 5%;
-        border-radius: 12px;
+        width: 100%;
     }
 
     .user-image {
@@ -101,6 +163,20 @@
         font-size: 20px;
         margin-bottom: 0%;
     }
+
+
+    #data-report {
+        padding:20px;
+        width: 100%;
+    }
+    
+
+    .img-report{
+        position: relative;
+        margin:0 10%;
+        border: solid 1.5px;
+        width: 80%;
+    }
 }
 /* Sección del perfil tablet */
 
@@ -125,15 +201,6 @@
         border: transparent;
         border-end-end-radius: 12px;
         border-start-end-radius: 12px;
-    }
-
-    #container-data {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: minmax(100%, auto);
-        background: #FCDB4B;
-        margin-top: 2%;
-        border-radius: 12px;
     }
 
     .user-image {
@@ -204,15 +271,26 @@
         margin-bottom: 0%;
     }
 
-}    
+} 
+
 
 @media screen 
   and (max-width: 2000px)
   and (min-width: 800px){
 
+<<<<<<< HEAD
     .options-dropdown{
         display: none;
     }
+=======
+    #container-data {
+        grid-gap: 10px;
+        width: 90%;
+        height: 120%;
+        padding-bottom: 2%;
+    }
+
+>>>>>>> a3606178b9ef8a14185d7c93c4ab78b01cc33f82
     .search {
         display: inline-flex;
         background-color: transparent;
@@ -235,19 +313,6 @@
     .info-profile {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-    }
-    
-    #container-data {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 10px;
-        grid-auto-rows: minmax(100px, auto);
-        width: 90%;
-        height: 120%;
-        background: #FCDB4B;
-        border-radius: 12px;
-        margin-top: 3%;
-        padding-bottom: 2%;
     }
     
     .user-image {
@@ -311,18 +376,11 @@
         align-items: center;
         margin-bottom: 4%;
         font-size: 13px;
-    }
-
-    #container-user-report{
-        display: flex;
-    } 
-
-    .img-report{
-        border: solid 1.5px;
-        width: 80%;
+        border-radius: 20px;
     }
 
     [id ^= "point"]{
         width: 25%;
     }
   }
+

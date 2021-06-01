@@ -7,22 +7,13 @@ export const signUpGoogle = () => {
   const promesa = auth
     .signInWithPopup(provider)
     .then((result) => {
-      if(result.additionalUserInfo.isNewUser){
+      if (result.additionalUserInfo.isNewUser) {
         registerData(result);
       }
       window.location.assign('#/timeline');
-      const credential = result.credential;
-    }).catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      const credential = error.credential;
-      // ...
-      return error;
-    });
+      return result;
+    })
+    .catch((error) => error);
   return promesa;
 };
 

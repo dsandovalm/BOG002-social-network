@@ -1,147 +1,101 @@
 import { getUser } from './profile.js';
 import { db } from '../controler/firebase_config.js';
 
-/*Actualizar nombre de usuario*/
+/* Actualizar nombre de usuario */
 export const updateName = (name) => {
   getUser()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      return db.collection('Users').doc(doc.id).update( {name: name} )
-      .then(() => {
-        console.log("Document successfully updated!");
-      })
-      .catch((error) => {
-        // The document probably doesn't exist.
-        console.error("Error updating document: ", error);
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        db.collection('Users').doc(doc.id).update({ name: name })
+          .then((result) => result)
+          .catch((error) => error);
       });
-    });
-  })
-  .catch((error) => {
-    console.log("Error getting documents: ", error);
-  });
-}
+    }).catch((error) => error);
+};
 
-/*Actualizar foto de perfil*/
+/* Actualizar foto de perfil */
 export const updatePhoto = (photo) => {
   getUser()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      return db.collection('Users').doc(doc.id).update( {photo: photo} )
-      .then(() => {
-        console.log("Document successfully updated!");
-      })
-      .catch((error) => {
-        // The document probably doesn't exist.
-        console.error("Error updating document: ", error);
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        db.collection('Users').doc(doc.id).update({ photo: photo })
+          .then((result) => result)
+          .catch((error) => error);
       });
-    });
-  })
-  .catch((error) => {
-    console.log("Error getting documents: ", error);
-  });
-}
+    }).catch((error) => error);
+};
 
-/*Configuración de correo eléctronico*/
+/* Configuración de correo eléctronico */
 export const updateEmail = (email) => {
-  //Configuración email en la colección 
+  // Configuración email en la colección
   getUser()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      return db.collection('Users').doc(doc.id).update({mail: email})
-      .then(() => {
-        console.log("Document successfully updated!");
-      })
-      .catch((error) => {
-        // The document probably doesn't exist.
-        console.error("Error updating document: ", error);
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        db.collection('Users').doc(doc.id).update({ mail: email })
+          .then((result) => result)
+          .catch((error) => error);
       });
-    });
-  })
-  .catch((error) => {
-    console.log("Error getting documents: ", error);
-  });
+   }).catch((error) => error);
 
-  //Configuración email en la autenticación
-  let user = firebase.auth().currentUser;
-  user.updateEmail(email).then(function () {
-    // Update successful.
-  }).catch(function (error) {
-    // An error happened.
-  });
-}
+  // Configuración email en la autenticación
+  const user = firebase.auth().currentUser;
+  user.updateEmail(email)
+    .then((result) => result)
+    .catch((error) => error);
+};
 
-/*Configuración de contraseña*/
-
+/* Configuración de contraseña */
 export const updatePassword = (newPassword) => {
-  let user = firebase.auth().currentUser;
-  user.updatePassword(newPassword).then(function () {
-    console.log('Update successful.')
-  }).catch(function (error) {
-    // An error happened.
-  });
-}
+  const user = firebase.auth().currentUser;
+  user.updatePassword(newPassword)
+    .then((result) => result)
+    .catch((error) => error);
+};
 
-/*Configuración de descripción*/
+/* Configuración de descripción */
 export const updateDescription = (description, methods) => {
-  //Configuración descripción en la colección 
+  // Configuración descripción en la colección
   getUser()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      return db.collection('Users').doc(doc.id).update({description: description, methods: methods})
-      .then(() => {
-        console.log("Document successfully updated!");
-      })
-      .catch((error) => {
-        // The document probably doesn't exist.
-        console.error("Error updating document: ", error);
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        db.collection('Users').doc(doc.id).update({ description: description, methods: methods })
+          .then((result) => result)
+          .catch((error) => error);
       });
-    });
-  })
-  .catch((error) => {
-    console.log("Error getting documents: ", error);
-  });
-}
+    })
+    .catch((error) => error);
+};
 
-
-/*Cerrar sesión*/
+/* Cerrar sesión */
 export const signOut = () => {
   const promesa = firebase
     .auth().signOut()
     .then((user) => {
-      console.log('Sign out')
       window.location.assign('#/login');
       return user;
     }).catch((error) => error);
   return promesa;
 };
 
-/*Desactivar cuenta*/
+/* Desactivar cuenta */
 export const deleteUser = () => {
-  //Borra el usuario en la colección
+  // Borra el usuario en la colección
   getUser()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
         firebase.firestore().collection('Users').doc(doc.id).delete();
-    });
-  })
-  .catch((error) => {
-    console.log("Error getting documents: ", error);
-  });
+      });
+    })
+    .catch((error) => error);
 
-  //Borra la autenticación
-  let user = firebase.auth().currentUser;
-  user.delete().then(function () {
-    console.log('User deleted.') 
-    window.location.assign('#/login');
-  }).catch(function (error) {
-    // An error happened.
-  });
-}
-
-
+  // Borra la autenticación
+  const user = firebase.auth().currentUser;
+  user.delete()
+    .then(() => {
+      window.location.assign('#/login');
+    })
+    .catch((error) => error);
+};

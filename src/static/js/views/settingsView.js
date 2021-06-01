@@ -5,10 +5,8 @@ export const renderSettings = () => {
   const html = `
         <section id="settings">
             <div class="header">
-                <div>
                     <h1>WALKTER</h1>
                     <img class="icon-home" id="icon-home" src="static/images/icons/icon-home.png">
-                </div>
             </div>
 
             <div class="content">
@@ -38,23 +36,22 @@ export const renderSettings = () => {
 };
 
 export function afterRenderSettings() {
-  
-  /*Cerrar sesión*/
+  /* Cerrar sesión */
   const btnSignOut = document.getElementById('signOut');
   btnSignOut.addEventListener('click', (e) => {
     e.preventDefault();
     signOut();
   });
 
-  /*Borrar usurio*/
-  const btnDeleteUser = document.getElementById('deleteUser')
-  btnDeleteUser.addEventListener('click',(e) => {
+  /* Borrar usuario */
+  const btnDeleteUser = document.getElementById('deleteUser');
+  btnDeleteUser.addEventListener('click', (e) => {
     e.preventDefault();
     deleteUser();
   });
 
   changeSettings.picture();
-  
+
   const btnSettPic = document.getElementById('settPic');
   const btnSettName = document.getElementById('settName');
   const btnSettMail = document.getElementById('settMail');

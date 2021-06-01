@@ -1,9 +1,36 @@
 /*Sección del muro*/
 
 /*Parámetros del primer input en una división (tener en cuenta si no hay más así)*/
-#muro header input{
-    border-radius: 20px;
-    font-size: 20px;
+#muro form{
+  margin: 0%;
+}
+
+#muro form > div {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    padding: 9px 22px 9px 26px;
+    border-radius: 30px;
+    border: 2px solid #cad3dc;
+
+}
+
+#muro form input {
+  border: none;
+  background: transparent;
+  padding-left: 24px;
+  background-image: url("/src/static/images/icons/icon-lupa.png");
+  background-size: 15px;
+  width: 0px;
+  background-repeat: no-repeat;
+  transition: all 0.1s;
+
+}
+
+#muro form input:focus {
+  outline: none;
+  width: 300px;
 }
 
 /*Posición de los imagenes (iconos) en la sección header de muro*/
@@ -50,13 +77,12 @@ footer img{padding: 0.5px}
 }
 
 #post-container {
-  padding: 20px 0;
+  padding: 0%;
   position: relative;
 }
 
 #map {
-  width: calc(100vw - 30px);
-  height: calc(100vh - 80px);
+  height: calc(100vh - 90px);
   margin: auto;
   margin-top: 20px;
   position: relative;
@@ -80,4 +106,12 @@ footer img{padding: 0.5px}
 .bubble {
   border-radius: 50%;
   border: solid 1px #000;
+}
+
+.reactions div{
+  background-color: #0000;
+  margin: 0;
+}
+.reactions img{
+  max-width: 100%;
 }
