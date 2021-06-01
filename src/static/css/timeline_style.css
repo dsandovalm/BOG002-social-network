@@ -1,0 +1,117 @@
+/*Sección del muro*/
+
+/*Parámetros del primer input en una división (tener en cuenta si no hay más así)*/
+#muro form{
+  margin: 0%;
+}
+
+#muro form > div {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    padding: 9px 22px 9px 26px;
+    border-radius: 30px;
+    border: 2px solid #cad3dc;
+
+}
+
+#muro form input {
+  border: none;
+  background: transparent;
+  padding-left: 24px;
+  background-image: url("/src/static/images/icons/icon-lupa.png");
+  background-size: 15px;
+  width: 0px;
+  background-repeat: no-repeat;
+  transition: all 0.1s;
+
+}
+
+#muro form input:focus {
+  outline: none;
+  width: 300px;
+}
+
+/*Posición de los imagenes (iconos) en la sección header de muro*/
+footer img{padding: 0.5px}
+
+.icon-profile,#icon-settings{
+    float: right
+}
+/* 
+#map{
+  margin-top:10px;
+  width: calc(100vw - 30px);
+  height: calc(100vh - 80px); /*Solo sirve en mobile, hacer responsive
+}
+
+#modal{
+  width:100%;
+  height:100%;
+  position: fixed; 
+}*/
+
+.report {
+    max-width:500px;
+    width: 80%;
+    padding: 20px;
+    border-radius: 20px; 
+  vertical-align: middle;
+}
+.flex{
+  display: flex;
+}
+
+.mid {
+  width:50%;
+}
+
+.mid div {
+  flex-grow:1;
+}
+
+.reactions{ 
+  display:flex;
+  justify-content: space-around;
+}
+
+#post-container {
+  padding: 0%;
+  position: relative;
+}
+
+#map {
+  height: calc(100vh - 90px);
+  margin: auto;
+  margin-top: 20px;
+  position: relative;
+  z-index: 50;
+}
+
+.report {
+  height: 300px;
+  width: 60%;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background-color: white;
+  border-radius: 20px;
+  border: solid 1.5px;
+}
+
+.bubble {
+  border-radius: 50%;
+  border: solid 1px #000;
+}
+
+.reactions div{
+  background-color: #0000;
+  margin: 0;
+}
+.reactions img{
+  max-width: 100%;
+}
