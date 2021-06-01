@@ -1,31 +1,19 @@
-// - - - GOOGLE Y FACEBOOK
+import { auth } from '../controler/firebase_config.js';
+import { registerData } from './register.js';
 
 // Crear cuenta con Google
 export const signUpGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  const promesa = firebase
-    .auth()
+  const promesa = auth
     .signInWithPopup(provider)
     .then((result) => {
+      if (result.additionalUserInfo.isNewUser) {
+        registerData(result);
+      }
       window.location.assign('#/timeline');
-      /** @type {firebase.auth.OAuthCredential} */
-      const credential = result.credential;
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
       return result;
-    }).catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      const credential = error.credential;
-      // ...
-      return error;
-    });
+    })
+    .catch((error) => error);
   return promesa;
 };
 
@@ -33,8 +21,7 @@ export const signUpGoogle = () => {
 
 // Inicio de sesión con email y password
 export const logInEmail = (email, password) => {
-  const promesa = firebase
-    .auth().signInWithEmailAndPassword(email, password)
+  const promesa = auth.signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       window.location.assign('#/timeline');
       return userCredential;
@@ -52,10 +39,10 @@ export const logInEmail = (email, password) => {
 
 // Creación de cuenta con email y password
 export const signUpEmail = (email, password) => {
-  const promesa = firebase
-    .auth().createUserWithEmailAndPassword(email, password)
+  const promesa = auth.createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
-      window.location.assign('#/timeline');
+      registerData(userCredential);
+      window.location.assign('#/register');
       return userCredential;
     })
     .catch((error) => {

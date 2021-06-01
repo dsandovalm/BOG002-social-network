@@ -1,23 +1,24 @@
-import {
-  signUpGoogle, logInEmail, signUpEmail,
-} from '../model/login.js';
+import { signUpGoogle, logInEmail, signUpEmail } from '../model/login.js';
 
 export const renderLogin = () => {
   const html = `
     <section id="inicio">
 
+      <header>
         <div id="Presentation">
         <h1>WALKTER</h1>
         <h2 class="slogan">Apostemos por vías más seguras para todos.</h2>
         <img class="img-login" src="static/images/Web image.png" att="app">
         </div>
+      </header>
 
+      <body>
         <div id="register">
             <h1>WALKTER</h1>
             <form id="signin-form" class = "container-signin">
                 <div>
                     <p>¿Tienes una cuenta?</p>
-                    <a id = "link-login" class = "link">Iniciar sesión</a>
+                    <a id ="link-login" class = "link">Iniciar sesión</a>
                 </div>
                 <div id = "register-signin">
                     <button id="btn-google" class="btn-google"><img class="icon-gmail" src="static/images/icons/icon-google.png" alt="Gmail">Iniciar sesión con Google</button>
@@ -45,7 +46,7 @@ export const renderLogin = () => {
 
             </form>
         </div>
-
+      </body>
     </section>`;
 
   const div = document.createElement('div');

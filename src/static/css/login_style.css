@@ -1,7 +1,7 @@
 /*Sección de inicio de sesión*/
-
 #register-signup{display: none}
 #link-login{display: none}
+
 /* Imagen en landing page*/
 .img-login {
     width: 600px;
@@ -10,8 +10,9 @@
 
 /*Configuración del tamaño para slogan*/
 .slogan{
+    width: 65vw;
     font-size: 40px;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 }
 
 /*Parametros del link en caso de olvidar contraseña*/
@@ -80,11 +81,11 @@
 
 /*Botón inicio de sesión con Google*/
 .btn-google{
-    padding: 3px;
+    width: 240px;
+    padding: 1%;
     background-color:rgb(255, 255, 255);
     color: black;
     border-radius: 10px;
-    border: none;
     display: inline-flex;
     align-items: center;
 }
