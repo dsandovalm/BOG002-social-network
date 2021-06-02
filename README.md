@@ -2,11 +2,15 @@
 
 ## Sobre la web ##
 
-Proyecto: Social Network. De que trata?
-Cómo descubriste las necesidades de los usuarios? 
-Cómo llegaste a la definición final de tu producto?
-Quiénes son los principales usuarios de producto?
-Qué problema resuelve el producto / para qué le servirá a estos usuarios?
+**Proyecto:** Social Network.
+
+Esta es una red social orientada a usuarios de diferentes modos de transporte en la cual pueden realizar posts o 'reportes', relacionados con el estado del tránsito en el punto donde se encuentran, asi como mirar los reportes hechos por otros usuarios recientemente. 
+
+Se pueden reportar diferentes tipos de eventos como Accidentes, Vias cerradas, Infracciones o Bloqueos.
+
+El producto fue originalmente pensado como una red social donde se podia denunciar las infracciones cometidas por otros conductores, en la forma final que tomó llegamos a un proyecto en el cual estas infracciones son solo un tipo de reporte más.
+
+Este proyecto toma importancia particular en situaciones como la vivida actualmente en Bogotá, en la cual el transporte es particularmente complicado tanto para Conductores Particulares, Usuarios de Transmilenio e incluso Biciusuarios y aplicaciones de movilidad si bien aportan información, no está actualizada en tiempo real con cosas tan variables como los bloqueos de vias y manifestaciones, tampoco con algunos arreglos y cierres de viales temporales. 
 
 ### Uso y Tutoriales ###
 
@@ -42,8 +46,8 @@ Puedes acceder a la versión web haciendo click [aqui](https://dsandovalm.github
 ![Create post](./src/static/images/figma/sn_lp_create.png)
 ![Camera](./src/static/images/figma/sn_lp_camera.png)
 
-
 **Feedback recibido**
+- Se redujo el numero de pantallas. Se cambió el flujo de la creación de posts al eliminar la cámara.
 
 #### Alta fidelidad ####
 - Sign in
