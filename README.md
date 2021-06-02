@@ -55,3 +55,7 @@ Puedes acceder a la versión web haciendo click [aqui](https://dsandovalm.github
 - Inicio: mapa
 - Modal: publicación
 - Perfil de usuario
+
+## Sobre el código
+
+En este proyecto se utilizó la base de datos ofrecida por Google, Firebase, de la cual se utilizó la Autenticación _firebase.auth()_ para registros e inicios de sesión, la base de datos noSQL Firestore _firebase.firestore()_ para guardar datos de posts y usuarios y el Storage _firebase.storage_ para guardar las imagenes de los posts.
