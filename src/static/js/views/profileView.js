@@ -8,12 +8,13 @@ export const renderProfile = (user) => {
   <section id = "profile">
     
       <header>
-            <div class="search">
-            <input class="bar-search" type="search" placeholder="Search..." maxlength="100" autocomplete="off">
-            <button type="submit" class="img-search"><img class="lupa" src="static/images/icons/icon-lupa.png" alt="search"></button>
-            </div>
-            <img class="icon-home" id="icon-home" src="static/images/icons/icon-home.png">
-            <img id="icon-settings" class="icon-settings" src="static/images/icons/icon-settings.png">
+        <img class="icon-home" id="icon-home" src="static/images/icons/icon-home.png">
+        <img id="icon-settings" class="icon-settings" src="static/images/icons/icon-settings.png">
+        <form autocomplete="off">
+          <div>
+            <input type="text" name="input-search" placeholder="Buscar una dirección...">
+          </div>
+        </form>
       </header>
 
       <div class="info-profile">

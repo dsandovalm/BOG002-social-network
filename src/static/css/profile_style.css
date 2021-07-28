@@ -1,6 +1,36 @@
 
 /* Sección del perfil */
-
+#profile form{
+    margin: 0%;
+  }
+  
+  #profile form > div {
+      width: 40%;
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      padding: 9px 22px 9px 26px;
+      border-radius: 30px;
+      border: 2px solid #cad3dc;
+  
+  }
+  
+  #profile form input {
+    border: none;
+    background: transparent;
+    padding-left: 24px;
+    background-image: url("/src/static/images/icons/icon-lupa.png");
+    background-size: 15px;
+    width: 0px;
+    background-repeat: no-repeat;
+    transition: all 0.1s;
+  
+  }
+  
+  #profile form input:focus {
+    outline: none;
+    width: 300px;
+  }
 /* General */ 
 
 #container-data {

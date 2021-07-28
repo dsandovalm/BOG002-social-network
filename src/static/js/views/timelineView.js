@@ -13,8 +13,6 @@ export const renderTimeline = () => {
             <input type="text" name="input-search" placeholder="Buscar una dirección...">
           </div>
         </form>
-        <!-- <input maxlength="100" autocomplete="off">
-        <img id=icon-lupa src="static/images/icons/icon-lupa.png"> -->
       </header>
       <div id = "post-container">
         <div id="map"></div> 

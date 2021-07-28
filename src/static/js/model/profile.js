@@ -41,21 +41,21 @@ export function getDataPost(container, modalContainer) {
           container.innerHTML += html;
 
           /* Ciclo para los botones de eliminar post */
-          let deleteBtns = document.getElementsByClassName('deleteBtn');
-          for (const button of deleteBtns){
+          const deleteBtns = document.getElementsByClassName('deleteBtn');
+          for (const button of deleteBtns) {
             button.addEventListener('click', () => modalProfile.delete(modalContainer, button.id));
           }
 
           /* Ciclo para los botones de editar post */
-          let editBtns = document.getElementsByClassName('editBtn');
-          for (const button of editBtns){
+          const editBtns = document.getElementsByClassName('editBtn');
+          for (const button of editBtns) {
             button.addEventListener('click', () => modalProfile.edit(modalContainer, button.id));
           }
         })
-        .catch((error) => error)
-      })
+          .catch((error) => error);
+      });
     })
-    .catch((error) => error)
+    .catch((error) => error);
   return post;
 }
 
@@ -68,24 +68,24 @@ export function getUserStars(container) {
         like: 0,
         doubt: 0,
         dislike: 0,
-      }
+      };
 
-      snapshot.forEach(post => {
+      snapshot.forEach((post) => {
         total.like += post.data().stats.like.length;
         total.doubt += post.data().stats.doubt.length;
         total.dislike += post.data().stats.dislike.length;
       });
 
-      const stars = Math.round((total.like * 5 + total.dislike * 3) / (total.like + total.doubt + total.dislike))
-      let html = ``;
+      const stars = Math.round((total.like * 5 + total.dislike * 3) / (total.like + total.doubt + total.dislike));
+      let html = '';
       // Acá iria la renderización de 5 spans o imagenes
       for (let i = 0; i < 5; i++) {
         if (i < stars) {
-          html += `<span class="star star-full"> </span>`;
+          html += '<span class="star star-full"> </span>';
         } else {
-          html += `<span class="star star-void"> </span>`;
+          html += '<span class="star star-void"> </span>';
         }
       }
       container.innerHtml = html;
     });
-};
+}
